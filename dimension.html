@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mariyam's Celestial Dimension • A Gift Under the Stars</title>
+    <link rel="icon" type="image/png" href="img/logomariyam.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ivory: {
+                DEFAULT: "#fcfaf7",
+                dark: "#f3ece1",
+                paper: "#fdfbf7",
+                soft: "#faf5ed",
+              },
+              espresso: {
+                light: "#6b4d3e",
+                DEFAULT: "#362319",
+                dark: "#23160e",
+                deeper: "#170e08",
+              },
+              obsidian: {
+                DEFAULT: "#14100c",
+                light: "#1f1a15",
+              },
+              champagne: {
+                DEFAULT: "#d4af37",
+                light: "#f5e8b8",
+                dark: "#b38f24",
+              },
+              pinkheart: "#ff69b4",
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              cursive: ["Sacramento", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #14100c;
+        color: #fcfaf7;
+        overflow-x: hidden;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #170e08;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6b4d3e;
+        border-radius: 4px;
+      }
+
+      .glass-dark {
+        background: rgba(31, 26, 21, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #fcfaf7;
+      }
+
+      .title-glow {
+        text-shadow:
+          0 0 35px rgba(212, 175, 55, 0.6),
+          0 0 70px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Star Canvas Background */
+      #starCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Flying Dragons Animations */
+      @keyframes flyDragon1 {
+        0% {
+          transform: translate(-150px, 80px) scaleX(1);
+        }
+        50% {
+          transform: translate(calc(100vw + 150px), -100px) scaleX(1);
+        }
+        52% {
+          transform: translate(calc(100vw + 150px), -100px) scaleX(-1);
+        }
+        100% {
+          transform: translate(-150px, 80px) scaleX(-1);
+        }
+      }
+      .anim-dragon-1 {
+        position: absolute;
+        top: 15vh;
+        animation: flyDragon1 26s ease-in-out infinite;
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      @keyframes flyDragon2 {
+        0% {
+          transform: translate(calc(100vw + 150px), 250px) scaleX(-1);
+        }
+        50% {
+          transform: translate(-150px, 150px) scaleX(-1);
+        }
+        52% {
+          transform: translate(-150px, 150px) scaleX(1);
+        }
+        100% {
+          transform: translate(calc(100vw + 150px), 250px) scaleX(1);
+        }
+      }
+      .anim-dragon-2 {
+        position: absolute;
+        top: 45vh;
+        animation: flyDragon2 32s ease-in-out infinite;
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      @keyframes flyDragon3 {
+        0% {
+          transform: translate(-150px, 450px) scaleX(1);
+        }
+        50% {
+          transform: translate(calc(100vw + 150px), 220px) scaleX(1);
+        }
+        52% {
+          transform: translate(calc(100vw + 150px), 220px) scaleX(-1);
+        }
+        100% {
+          transform: translate(-150px, 450px) scaleX(-1);
+        }
+      }
+      .anim-dragon-3 {
+        position: absolute;
+        top: 68vh;
+        animation: flyDragon3 30s ease-in-out infinite;
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      /* Sliding Compliment Ticker */
+      @keyframes slideTicker {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+      }
+      .sliding-compliment {
+        display: inline-block;
+        white-space: nowrap;
+        animation: slideTicker 14s linear infinite;
+      }
+
+      /* Spinning Vinyl */
+      @keyframes spinVinyl {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .spinning-disc {
+        animation: spinVinyl 4s linear infinite;
+        animation-play-state: paused;
+      }
+      .spinning-disc.playing {
+        animation-play-state: running;
+      }
+
+      /* Rotating Icon Animation */
+      @keyframes slowRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .rotating-star-icon {
+        animation: slowRotate 10s linear infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-champagne selection:text-espresso-dark relative"
+  >
+    <!-- BACKGROUND STAR CANVAS -->
+    <canvas id="starCanvas"></canvas>
+
+    <!-- FLOATING DRAGONS -->
+    <div
+      class="anim-dragon-1 text-champagne text-4xl opacity-80 filter drop-shadow-[0_0_20px_rgba(212,175,55,0.9)]"
+    >
+      <i class="fas fa-dragon animate-pulse"></i>
+    </div>
+    <div
+      class="anim-dragon-2 text-pinkheart text-3xl opacity-75 filter drop-shadow-[0_0_15px_rgba(255,105,180,0.8)]"
+    >
+      <i class="fas fa-dragon animate-pulse" style="animation-delay: -2s"></i>
+    </div>
+    <div
+      class="anim-dragon-3 text-amber-300 text-3xl opacity-80 filter drop-shadow-[0_0_15px_rgba(253,224,71,0.8)]"
+    >
+      <i class="fas fa-dragon animate-pulse" style="animation-delay: -4s"></i>
+    </div>
+
+    <!-- FLOATING TOP NAVBAR -->
+    <header
+      class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50 glass-dark rounded-full px-6 py-3.5 flex justify-between items-center shadow-2xl border border-champagne/50"
+    >
+      <a
+        href="index.html"
+        class="inline-flex items-center gap-2 text-champagne hover:text-ivory transition-colors text-xs uppercase tracking-widest font-bold group"
+      >
+        <span
+          class="w-7 h-7 rounded-full bg-espresso-dark border border-champagne/40 flex items-center justify-center group-hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-arrow-left text-xs"></i>
+        </span>
+        <span class="hidden sm:inline">Sanctuary Home</span>
+      </a>
+
+      <div
+        class="flex items-center gap-2.5 px-4 py-1 rounded-full bg-espresso-dark/80 border border-champagne/30 shadow-inner"
+      >
+        <i class="fas fa-star text-champagne text-xs rotating-star-icon"></i>
+        <span
+          class="font-serif italic text-champagne text-xs sm:text-sm font-semibold"
+          >Mariyam's Celestial Dimension</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-champagne animate-ping"></span>
+        <span
+          class="text-[10px] uppercase tracking-widest text-champagne font-bold hidden md:inline"
+          >Celestial Realm</span
+        >
+      </div>
+    </header>
+
+    <!-- SECTION 1: SHINING MOON & CELESTIAL COMPARISONS -->
+    <section
+      class="pt-36 pb-20 px-4 sm:px-8 max-w-5xl mx-auto text-center relative z-10"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs tracking-widest uppercase mb-4 border border-champagne/40"
+      >
+        <i class="fas fa-moon text-xs"></i> Chapter I • The 15-Day Lunar
+        Transformation
+      </div>
+      <h1
+        class="font-serif text-4xl sm:text-6xl font-bold text-ivory mb-6 title-glow"
+      >
+        Shining Moon & Celestial Comparisons
+      </h1>
+      <p
+        class="font-serif italic text-lg sm:text-xl text-ivory/90 max-w-2xl mx-auto mb-10"
+      >
+        "Drag the slider across 15 days to watch the moon shine with its
+        naturally bended terminator curve. Read how each phase reflects a unique
+        trait of your beautiful soul."
+      </p>
+
+      <div
+        class="glass-dark p-8 sm:p-12 rounded-3xl border border-champagne/40 shadow-2xl relative overflow-hidden mb-8"
+      >
+        <div class="flex flex-col items-center">
+          <div class="mb-8 flex items-center justify-center relative">
+            <svg
+              id="moonSvg"
+              viewBox="0 0 150 150"
+              class="w-36 h-36 sm:w-44 sm:h-44 drop-shadow-[0_0_50px_rgba(255,250,220,0.85)] transition-all duration-300"
+            >
+              <defs>
+                <radialGradient id="moonGrad" cx="35%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="45%" stop-color="#fef3c7" />
+                  <stop offset="100%" stop-color="#d4af37" />
+                </radialGradient>
+              </defs>
+              <circle cx="75" cy="75" r="70" fill="url(#moonGrad)" />
+              <path
+                id="moonShadowPath"
+                fill="#14100c"
+                opacity="0.94"
+                d="M 75 5 A 70 70 0 0 1 75 145 A 70 70 0 0 1 75 5"
+              />
+            </svg>
+          </div>
+
+          <div class="mb-6 space-y-3 w-full">
+            <span
+              id="lunarDayTitle"
+              class="text-xs uppercase tracking-widest text-champagne font-bold block"
+            >
+              Day 15 • Full Moon (Peak Radiance)
+            </span>
+
+            <div
+              class="p-4 rounded-2xl bg-obsidian/80 border border-champagne/30 text-left max-w-xl mx-auto space-y-2"
+            >
+              <strong
+                class="text-champagne font-bold text-xs uppercase tracking-wider block"
+                id="lunarPhaseName"
+              >
+                Lunar Observation:
+              </strong>
+              <p
+                id="lunarDescription"
+                class="font-sans text-xs text-ivory/80 leading-relaxed"
+              >
+                "On Day 15, the full moon reaches 100% illumination, flooding
+                the dark universe with flawless, golden-white starlight."
+              </p>
+            </div>
+
+            <div
+              class="p-4 rounded-2xl bg-espresso-dark/90 border border-champagne/40 text-left max-w-xl mx-auto space-y-2"
+            >
+              <strong
+                class="text-champagne-light font-bold text-xs uppercase tracking-wider block"
+                id="lunarComparisonTitle"
+              >
+                How She Compares:
+              </strong>
+              <p
+                id="lunarComparisonText"
+                class="font-serif italic text-base text-ivory leading-relaxed"
+              >
+                "Just like the full moon at its highest peak, your presence
+                completely lights up every corner of my world with pure grace
+                and mesmerizing charm."
+              </p>
+            </div>
+          </div>
+
+          <div class="w-full max-w-md space-y-3">
+            <div
+              class="flex justify-between text-[11px] text-champagne uppercase font-bold tracking-widest"
+            >
+              <span>Day 1 (New Moon)</span>
+              <span>Day 15 (Full Moon)</span>
+            </div>
+            <input
+              type="range"
+              id="lunarSlider"
+              min="1"
+              max="15"
+              value="15"
+              oninput="updateMoonComparison(this.value)"
+              class="w-full accent-champagne cursor-pointer bg-espresso-dark h-2.5 rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SECRET COMPLIMENT EGG -->
+    <section
+      class="py-20 px-4 sm:px-8 max-w-4xl mx-auto relative z-10 text-center border-t border-champagne/20"
+    >
+      <span
+        class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+        >Chapter II</span
+      >
+      <h2 class="font-serif text-3xl sm:text-5xl text-ivory font-normal mb-4">
+        The Secret Compliment Egg
+      </h2>
+      <p class="text-sm text-ivory/80 max-w-md mx-auto mb-10">
+        "Tap the magical cosmic egg to crack it open. Watch your unique
+        compliment glide across the starry dimension like a shooting star!"
+      </p>
+
+      <div
+        class="glass-dark p-8 sm:p-12 rounded-3xl border border-champagne/40 shadow-2xl max-w-lg mx-auto relative overflow-hidden"
+      >
+        <div
+          id="eggWrapper"
+          onclick="crackEgg()"
+          class="cursor-pointer group py-6"
+        >
+          <div
+            class="w-28 h-28 rounded-full bg-gradient-to-tr from-champagne/30 via-espresso-dark to-champagne/20 border-2 border-champagne flex items-center justify-center mx-auto mb-4 shadow-2xl group-hover:scale-110 transition-transform relative"
+          >
+            <span id="eggEmoji" class="text-6xl select-none animate-bounce"
+              >🥚</span
+            >
+            <div
+              class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-pinkheart text-ivory text-xs flex items-center justify-center font-bold shadow-md"
+            >
+              ✨
+            </div>
+          </div>
+          <span
+            class="text-xs uppercase tracking-widest text-champagne font-bold group-hover:underline"
+          >
+            Tap to Crack Egg
+          </span>
+        </div>
+
+        <div
+          id="complimentTickerBox"
+          class="hidden mt-6 p-4 rounded-2xl bg-obsidian/95 border border-champagne/60 overflow-hidden relative shadow-inner"
+        >
+          <div
+            class="flex items-center justify-between mb-2 border-b border-champagne/20 pb-1"
+          >
+            <span
+              class="text-[9px] uppercase font-bold tracking-widest text-champagne"
+            >
+              <i class="fas fa-star mr-1"></i> Special Compliment Unlocked
+            </span>
+            <button
+              onclick="resetEgg()"
+              class="text-xs text-ivory/60 hover:text-champagne"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="whitespace-nowrap overflow-hidden py-2">
+            <p
+              id="slidingComplimentText"
+              class="font-serif italic text-base sm:text-lg text-ivory sliding-compliment"
+            >
+              <!-- Dynamic compliment text -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PYRAMID OF PREFERENCES (25 TRAIT OPTIONS) -->
+    <section
+      class="py-20 px-4 sm:px-8 max-w-5xl mx-auto relative z-10 border-t border-champagne/20"
+    >
+      <div class="text-center mb-10">
+        <span
+          class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+          >Chapter III</span
+        >
+        <h2 class="font-serif text-3xl sm:text-5xl text-ivory font-normal">
+          Pyramid of Preferences
+        </h2>
+        <p
+          class="text-xs sm:text-sm text-ivory/80 max-w-xl mx-auto mt-2 leading-relaxed"
+        >
+          "Build your personal preference pyramid! Tap any of the 25 traits
+          below to assign them into Tier 1 (Apex Top 3), Tier 2 (Core Values
+          Next 7), or Tier 3 (Desired Traits Next 15)."
+        </p>
+      </div>
+
+      <!-- PYRAMID CONTAINER -->
+      <div
+        class="glass-dark p-6 sm:p-10 rounded-3xl border border-champagne/40 shadow-2xl space-y-8 mb-10"
+      >
+        <!-- TIER 1: APEX (TOP 3) -->
+        <div class="space-y-2">
+          <div
+            class="flex justify-between items-center text-xs text-champagne font-bold uppercase tracking-wider border-b border-champagne/30 pb-2"
+          >
+            <span
+              ><i class="fas fa-crown text-amber-300 mr-1.5"></i> Tier 1 • Apex
+              Non-Negotiables</span
+            >
+            <span
+              id="countTier1"
+              class="bg-espresso-dark px-3 py-0.5 rounded-full border border-champagne/30 text-[10px]"
+              >0 / 3</span
+            >
+          </div>
+          <div
+            id="tier1Container"
+            class="min-h-[60px] p-3 rounded-2xl bg-obsidian/70 border border-dashed border-champagne/30 flex flex-wrap gap-2 items-center"
+          >
+            <span class="text-xs italic text-ivory/40"
+              >Tap traits below to add to Tier 1...</span
+            >
+          </div>
+        </div>
+
+        <!-- TIER 2: CORE VALUES (NEXT 7) -->
+        <div class="space-y-2">
+          <div
+            class="flex justify-between items-center text-xs text-champagne font-bold uppercase tracking-wider border-b border-champagne/30 pb-2"
+          >
+            <span
+              ><i class="fas fa-gem text-pinkheart mr-1.5"></i> Tier 2 • Core
+              Values</span
+            >
+            <span
+              id="countTier2"
+              class="bg-espresso-dark px-3 py-0.5 rounded-full border border-champagne/30 text-[10px]"
+              >0 / 7</span
+            >
+          </div>
+          <div
+            id="tier2Container"
+            class="min-h-[70px] p-3 rounded-2xl bg-obsidian/70 border border-dashed border-champagne/30 flex flex-wrap gap-2 items-center"
+          >
+            <span class="text-xs italic text-ivory/40"
+              >Tap traits below to add to Tier 2...</span
+            >
+          </div>
+        </div>
+
+        <!-- TIER 3: DESIRED QUALITIES (NEXT 15) -->
+        <div class="space-y-2">
+          <div
+            class="flex justify-between items-center text-xs text-champagne font-bold uppercase tracking-wider border-b border-champagne/30 pb-2"
+          >
+            <span
+              ><i class="fas fa-heart text-champagne mr-1.5"></i> Tier 3 •
+              Desired Qualities</span
+            >
+            <span
+              id="countTier3"
+              class="bg-espresso-dark px-3 py-0.5 rounded-full border border-champagne/30 text-[10px]"
+              >0 / 15</span
+            >
+          </div>
+          <div
+            id="tier3Container"
+            class="min-h-[80px] p-3 rounded-2xl bg-obsidian/70 border border-dashed border-champagne/30 flex flex-wrap gap-2 items-center"
+          >
+            <span class="text-xs italic text-ivory/40"
+              >Tap traits below to add to Tier 3...</span
+            >
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex justify-between items-center pt-2">
+          <button
+            onclick="resetPyramid()"
+            class="px-4 py-2 rounded-full bg-espresso-dark text-ivory/70 hover:text-champagne text-xs border border-champagne/30 transition-colors"
+          >
+            <i class="fas fa-undo mr-1.5"></i> Reset Pyramid
+          </button>
+          <button
+            onclick="summarizePyramid()"
+            class="px-5 py-2 rounded-full bg-champagne text-espresso-dark font-bold text-xs uppercase tracking-wider hover:bg-ivory transition-colors shadow-md"
+          >
+            <i class="fas fa-check-circle mr-1.5"></i> View Pyramid Summary
+          </button>
+        </div>
+
+        <!-- SUMMARY OUTPUT BOX -->
+        <div
+          id="pyramidSummaryBox"
+          class="hidden p-5 rounded-2xl bg-espresso-dark/95 border border-champagne/60 space-y-3 font-serif italic text-sm text-ivory"
+        >
+          <!-- Dynamic summary text -->
+        </div>
+      </div>
+
+      <!-- AVAILABLE 25 TRAIT CARDS -->
+      <div class="space-y-3">
+        <span
+          class="text-xs font-bold uppercase tracking-widest text-champagne block text-center"
+        >
+          Available Trait Pool (25 Core Attributes)
+        </span>
+        <div
+          id="traitPoolContainer"
+          class="flex flex-wrap gap-2.5 justify-center"
+        >
+          <!-- 25 Trait Cards generated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 5-SONG PLAYLIST & SECRET KEY -->
+    <section
+      class="py-20 px-4 sm:px-8 max-w-4xl mx-auto relative z-10 border-t border-champagne/20 mb-12"
+    >
+      <div class="text-center mb-10">
+        <span
+          class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+          >Chapter IV</span
+        >
+        <h2 class="font-serif text-3xl sm:text-5xl text-ivory font-normal">
+          Celestial Soundscape Player
+        </h2>
+        <p class="text-xs sm:text-sm text-ivory/80 max-w-lg mx-auto mt-2">
+          "Click any song to play. The active track will be distinctively
+          highlighted in gold, and you can pause or stop anytime."
+        </p>
+      </div>
+
+      <div
+        class="glass-dark p-6 sm:p-8 rounded-3xl border border-champagne/40 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-12"
+      >
+        <!-- Vinyl Disc -->
+        <div
+          class="md:col-span-5 flex flex-col items-center justify-center bg-obsidian/80 p-6 rounded-2xl border border-champagne/30 shadow-inner"
+        >
+          <div
+            id="vinylDisc"
+            class="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-espresso-deeper border-4 border-champagne shadow-2xl flex items-center justify-center relative spinning-disc"
+          >
+            <div
+              class="absolute inset-4 rounded-full border border-champagne/30"
+            ></div>
+            <div
+              class="absolute inset-8 rounded-full border border-champagne/20"
+            ></div>
+            <div
+              class="w-12 h-12 rounded-full bg-champagne flex items-center justify-center border-2 border-espresso-dark shadow-md z-10"
+            >
+              <i class="fas fa-compact-disc text-espresso-dark text-lg"></i>
+            </div>
+          </div>
+          <span
+            id="currentSongTitle"
+            class="mt-4 font-serif italic text-sm text-champagne font-bold text-center"
+          >
+            Bloodstream — Ed Sheeran
+          </span>
+          <span
+            id="playerStatus"
+            class="text-[10px] uppercase tracking-widest text-ivory/60 mt-1"
+            >Ready to play</span
+          >
+
+          <button
+            onclick="stopAudio()"
+            class="mt-4 px-4 py-1.5 rounded-full bg-espresso-dark text-champagne text-xs font-bold uppercase tracking-wider border border-champagne/40 hover:bg-champagne hover:text-espresso-dark transition-colors shadow-md"
+          >
+            <i class="fas fa-stop mr-1"></i> Stop Music
+          </button>
+        </div>
+
+        <!-- Playlist (5 Songs: 4 M4A, 1 MP3) -->
+        <div class="md:col-span-7 space-y-2.5" id="playlistContainer">
+          <button
+            onclick="playSong(0, 'Bloodstream', 'Bloodstream.mp3', this)"
+            class="playlist-btn w-full p-3.5 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark text-ivory transition-all border border-champagne/30 flex items-center justify-between text-left group"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-full bg-champagne/20 text-champagne group-hover:bg-espresso-dark group-hover:text-champagne flex items-center justify-center text-xs font-bold"
+                >01</span
+              >
+              <div>
+                <strong class="block text-xs font-serif">Bloodstream</strong>
+                <span class="text-[10px] opacity-70">Alyssa Grace</span>
+              </div>
+            </div>
+            <i
+              class="fas fa-play text-xs text-champagne group-hover:text-espresso-dark"
+            ></i>
+          </button>
+
+          <button
+            onclick="playSong(1, 'GhaamChhaya', 'GhaamChhaya.m4a', this)"
+            class="playlist-btn w-full p-3.5 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark text-ivory transition-all border border-champagne/30 flex items-center justify-between text-left group"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-full bg-champagne/20 text-champagne group-hover:bg-espresso-dark group-hover:text-champagne flex items-center justify-center text-xs font-bold"
+                >02</span
+              >
+              <div>
+                <strong class="block text-xs font-serif">GhaamChhaya</strong>
+                <span class="text-[10px] opacity-70">Yabesh Thapa</span>
+              </div>
+            </div>
+            <i
+              class="fas fa-play text-xs text-champagne group-hover:text-espresso-dark"
+            ></i>
+          </button>
+
+          <button
+            onclick="playSong(2, 'Timro Mana Ma', 'Timro Mana Ma.m4a', this)"
+            class="playlist-btn w-full p-3.5 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark text-ivory transition-all border border-champagne/30 flex items-center justify-between text-left group"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-full bg-champagne/20 text-champagne group-hover:bg-espresso-dark group-hover:text-champagne flex items-center justify-center text-xs font-bold"
+                >03</span
+              >
+              <div>
+                <strong class="block text-xs font-serif">Timro Mana Ma</strong>
+                <span class="text-[10px] opacity-70">Wangden Sherpa</span>
+              </div>
+            </div>
+            <i
+              class="fas fa-play text-xs text-champagne group-hover:text-espresso-dark"
+            ></i>
+          </button>
+
+          <button
+            onclick="
+              playSong(3, 'I Wanna Be Yours', 'I Wanna Be Yours.m4a', this)
+            "
+            class="playlist-btn w-full p-3.5 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark text-ivory transition-all border border-champagne/30 flex items-center justify-between text-left group"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-full bg-champagne/20 text-champagne group-hover:bg-espresso-dark group-hover:text-champagne flex items-center justify-center text-xs font-bold"
+                >04</span
+              >
+              <div>
+                <strong class="block text-xs font-serif"
+                  >I Wanna Be Yours</strong
+                >
+                <span class="text-[10px] opacity-70">Arctic Monkeys</span>
+              </div>
+            </div>
+            <i
+              class="fas fa-play text-xs text-champagne group-hover:text-espresso-dark"
+            ></i>
+          </button>
+
+          <button
+            onclick="playSong(4, 'Tum Tak', 'Tum Tak.m4a', this)"
+            class="playlist-btn w-full p-3.5 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark text-ivory transition-all border border-champagne/30 flex items-center justify-between text-left group"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-full bg-champagne/20 text-champagne group-hover:bg-espresso-dark group-hover:text-champagne flex items-center justify-center text-xs font-bold"
+                >05</span
+              >
+              <div>
+                <strong class="block text-xs font-serif">Tum Tak</strong>
+                <span class="text-[10px] opacity-70">Javed Ali</span>
+              </div>
+            </div>
+            <i
+              class="fas fa-play text-xs text-champagne group-hover:text-espresso-dark"
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- SECRET UNLOCK KEY -->
+      <div class="text-center pt-6">
+        <button
+          onclick="unlockSecretSection()"
+          class="w-16 h-16 rounded-full bg-espresso-dark border-2 border-champagne text-champagne flex items-center justify-center mx-auto hover:scale-110 transition-transform shadow-2xl group"
+          title="Tap to unlock secret sanctuary"
+        >
+          <i
+            class="fas fa-key text-xl group-hover:rotate-45 transition-transform"
+          ></i>
+        </button>
+        <span
+          class="text-[10px] uppercase font-bold tracking-widest text-champagne block mt-2"
+        >
+          Tap Secret Key to Unlock
+        </span>
+      </div>
+
+      <!-- UNLOCKED SECRET SECTION: FAMOUS LITERARY POETRY -->
+      <div
+        id="secretSection"
+        class="hidden mt-12 glass-dark p-8 sm:p-12 rounded-3xl border-2 border-champagne shadow-2xl text-center space-y-6 relative overflow-hidden"
+      >
+        <div
+          class="flex items-center justify-center gap-2 text-champagne text-xs font-bold uppercase tracking-widest"
+        >
+          <i class="fas fa-feather-pointed"></i> Secret Literary Sanctuary •
+          Affection & Grace
+        </div>
+
+        <!-- Classic Literature Poetry: She Walks in Beauty by Lord Byron -->
+        <div
+          class="max-w-xl mx-auto space-y-4 py-4 px-6 rounded-2xl bg-obsidian/60 border border-champagne/30"
+        >
+          <p
+            class="font-serif italic text-lg sm:text-xl text-ivory leading-relaxed"
+          >
+            "She walks in beauty, like the night<br />
+            Of cloudless climes and starry skies;<br />
+            And all that’s best of dark and bright<br />
+            Meet in her aspect and her eyes;<br />
+            Thus mellowed to that tender light<br />
+            Which heaven to gaudy day denies."
+          </p>
+          <span
+            class="block text-xs uppercase tracking-widest text-champagne font-bold pt-2"
+          >
+            — Lord Byron
+          </span>
+        </div>
+
+        <p class="font-serif italic text-sm text-champagne pt-2">
+          "Dedicated to Mariyam—whose radiant spirit, grace, and unmatched charm
+          light up every chapter under the stars."
+        </p>
+      </div>
+    </section>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="dimensionAudio" loop></audio>
+
+    <!-- FOOTER -->
+    <footer
+      class="py-8 bg-espresso-deeper text-ivory/50 text-center text-xs tracking-widest uppercase border-t border-espresso/20 relative z-10"
+    >
+      <p>Crafted for Mariyam • The Celestial Dimension</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      // 1. STAR CANVAS BACKGROUND
+      const canvas = document.getElementById("starCanvas");
+      const ctx = canvas.getContext("2d");
+      let stars = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initStars();
+      }
+      window.addEventListener("resize", resizeCanvas);
+
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < 60; i++) {
+          stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.2,
+            alpha: Math.random(),
+            speed: Math.random() * 0.02 + 0.005,
+          });
+        }
+      }
+      initStars();
+
+      function animateStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach((s) => {
+          s.alpha += s.speed;
+          if (s.alpha > 1 || s.alpha < 0.1) s.speed = -s.speed;
+          ctx.fillStyle = `rgba(255, 250, 230, ${Math.max(0, s.alpha)})`;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(animateStars);
+      }
+      animateStars();
+
+      // 2. 15-DAY SHINING BENDED MOON LOGIC
+      const moonData = {
+        1: {
+          phaseFraction: 0.05,
+          name: "Day 1 • New Moon",
+          desc: "A slender, beautifully bended silver sliver barely visible in the dark cosmic canvas.",
+          compTitle: "How She Compares:",
+          comp: "Even in quiet, subtle moments, your gentle nature carries a quiet charm that never goes unnoticed.",
+        },
+        3: {
+          phaseFraction: 0.2,
+          name: "Day 3 • Waxing Crescent",
+          desc: "A delicate bended crescent curve that glimmers faintly against the sky.",
+          compTitle: "How She Compares:",
+          comp: "Like a new crescent moon, your light is soft, pure, and filled with endless potential.",
+        },
+        5: {
+          phaseFraction: 0.35,
+          name: "Day 5 • Early Quarter",
+          desc: "Growing steadily stronger, illuminating the surrounding starlight with a curved terminator shadow.",
+          compTitle: "How She Compares:",
+          comp: "Your confidence and bright smile shine brighter with every single day.",
+        },
+        7: {
+          phaseFraction: 0.5,
+          name: "Day 7 • First Quarter Moon",
+          desc: "Exactly half illuminated with a smooth circular curve, standing perfectly balanced in the sky.",
+          compTitle: "How She Compares:",
+          comp: "Your balanced wisdom, calm faith, and sweet laughter make you truly one of a kind.",
+        },
+        9: {
+          phaseFraction: 0.65,
+          name: "Day 9 • Waxing Gibbous",
+          desc: "More than half full, casting a warm golden glow across the night.",
+          compTitle: "How She Compares:",
+          comp: "Your warmth fills every room you walk into, bringing comfort and genuine happiness.",
+        },
+        11: {
+          phaseFraction: 0.8,
+          name: "Day 11 • Gibbous Peak",
+          desc: "Nearly complete, glowing with incredible intensity under the stars.",
+          compTitle: "How She Compares:",
+          comp: "Your high dreams—like reaching Everest's peak—show how extraordinary you are.",
+        },
+        13: {
+          phaseFraction: 0.92,
+          name: "Day 13 • Almost Full",
+          desc: "Reaching almost 95% illumination, dominating the night sky.",
+          compTitle: "How She Compares:",
+          comp: "Your beauty and kind devotion to God radiate like a shining beacon.",
+        },
+        15: {
+          phaseFraction: 1.0,
+          name: "Day 15 • Full Moon (Absolute Radiance)",
+          desc: "100% full illumination, bathing the entire midnight world in silver radiance.",
+          compTitle: "How She Compares:",
+          comp: "When the moon shines at its absolute fullest, I admire your radiant presence. And when it fades... still I admire you.",
+        },
+      };
+
+      function updateMoonComparison(val) {
+        let key = 1;
+        if (val >= 14) key = 15;
+        else if (val >= 12) key = 13;
+        else if (val >= 10) key = 11;
+        else if (val >= 8) key = 9;
+        else if (val >= 6) key = 7;
+        else if (val >= 4) key = 5;
+        else if (val >= 2) key = 3;
+        else key = 1;
+
+        const data = moonData[key];
+        document.getElementById("lunarDayTitle").innerText = data.name;
+        document.getElementById("lunarDescription").innerText =
+          `"${data.desc}"`;
+        document.getElementById("lunarComparisonTitle").innerText =
+          data.compTitle;
+        document.getElementById("lunarComparisonText").innerText =
+          `"${data.comp}"`;
+
+        const f = data.phaseFraction;
+        const shadowPath = document.getElementById("moonShadowPath");
+
+        if (f >= 0.99) {
+          shadowPath.setAttribute(
+            "d",
+            "M 75 5 A 0 70 0 0 1 75 145 A 0 70 0 0 1 75 5",
+          );
+        } else if (f <= 0.02) {
+          shadowPath.setAttribute(
+            "d",
+            "M 75 5 A 70 70 0 0 1 75 145 A 70 70 0 0 1 75 5",
+          );
+        } else {
+          const rx = Math.abs(70 * (1 - 2 * f));
+          const sweep = f > 0.5 ? 0 : 1;
+          shadowPath.setAttribute(
+            "d",
+            `M 75 5 A 70 70 0 0 1 75 145 A ${rx} 70 0 0 ${sweep} 75 5`,
+          );
+        }
+      }
+      updateMoonComparison(15);
+
+      // 3. COMPLIMENT EGG LOGIC
+      const compliments = [
+        "Your devotion to God and your love for Jesus Christ give you an inner radiance that makes you breathtakingly gorgeous inside and out.",
+        "Your excitement during a Real Madrid match or when talking about CR7 is honestly the cutest thing in the universe!",
+        "Your laughter and bright energy instantly brighten every single room you walk into.",
+        "Your ambition to reach the peak of Mount Everest proves your soul is built with the courage of a true queen.",
+        "You carry a heart full of pure kindness, grace, and timeless charm.",
+        "Every late-night conversation about Pokhara and your favorite C-dramas is a treasured moment I hold close to my heart.",
+      ];
+
+      function crackEgg() {
+        document.getElementById("eggEmoji").innerText = "💥";
+        setTimeout(() => {
+          document.getElementById("eggWrapper").style.display = "none";
+          document
+            .getElementById("complimentTickerBox")
+            .classList.remove("hidden");
+          const random =
+            compliments[Math.floor(Math.random() * compliments.length)];
+          document.getElementById("slidingComplimentText").innerText =
+            `✨ ${random} ✨`;
+        }, 300);
+      }
+
+      function resetEgg() {
+        document.getElementById("complimentTickerBox").classList.add("hidden");
+        document.getElementById("eggWrapper").style.display = "block";
+        document.getElementById("eggEmoji").innerText = "🥚";
+      }
+
+      // 4. PYRAMID OF PREFERENCES (25 TRAIT OPTIONS)
+      const traitPool = [
+        { id: 1, name: "Deep Faith & Devotion", icon: "✨" },
+        { id: 2, name: "Real Madrid Matchday Energy", icon: "⚽" },
+        { id: 3, name: "Pokhara Adventure Soul", icon: "🏔️" },
+        { id: 4, name: "Gentle Kindness & Warmth", icon: "🤍" },
+        { id: 5, name: "Everest-Level Ambition", icon: "👑" },
+        { id: 6, name: "Emotional Intelligence", icon: "🧠" },
+        { id: 7, name: "Sense of Humor & Laughter", icon: "😄" },
+        { id: 8, name: "Unconditional Loyalty", icon: "🛡️" },
+        { id: 9, name: "Active Listener & Communicator", icon: "💬" },
+        { id: 10, name: "Peaceful & Calm Presence", icon: "🌿" },
+        { id: 11, name: "Love for C-Dramas & Stories", icon: "📺" },
+        { id: 12, name: "Respect for Family & Elders", icon: "🏡" },
+        { id: 13, name: "Cozy Late-Night Stargazer", icon: "🌙" },
+        { id: 14, name: "Patience in Hard Times", icon: "⏳" },
+        { id: 15, name: "Generous & Giving Heart", icon: "🎁" },
+        { id: 16, name: "Shared Values & Beliefs", icon: "✝️" },
+        { id: 17, name: "Sincere & Honest Truth", icon: "💎" },
+        { id: 18, name: "Playful & Cute Vibe", icon: "🎀" },
+        { id: 19, name: "Supportive of Big Dreams", icon: "🚀" },
+        { id: 20, name: "Creative & Artistic Mind", icon: "🎨" },
+        { id: 21, name: "Lover of Good Food & Momos", icon: "🥟" },
+        { id: 22, name: "Adventurous Travel Buddy", icon: "✈️" },
+        { id: 23, name: "Deep Mutual Respect", icon: "🤝" },
+        { id: 24, name: "Sweet Evening Coffee Dates", icon: "☕" },
+        { id: 25, name: "Pure Unfiltered Sunshine", icon: "☀️" },
+      ];
+
+      // Pyramid State Storage
+      let pyramidState = {
+        tier1: [], // Max 3
+        tier2: [], // Max 7
+        tier3: [], // Max 15
+      };
+
+      function initTraitPool() {
+        const poolElem = document.getElementById("traitPoolContainer");
+        poolElem.innerHTML = "";
+
+        traitPool.forEach((trait) => {
+          const isUsed =
+            pyramidState.tier1.some((t) => t.id === trait.id) ||
+            pyramidState.tier2.some((t) => t.id === trait.id) ||
+            pyramidState.tier3.some((t) => t.id === trait.id);
+
+          if (!isUsed) {
+            const card = document.createElement("button");
+            card.className =
+              "px-3.5 py-2 rounded-2xl bg-espresso-dark/90 hover:bg-champagne hover:text-espresso-dark border border-champagne/30 text-xs flex items-center gap-1.5 transition-all text-ivory shadow-md";
+            card.innerHTML = `<span>${trait.icon}</span> <span>${trait.name}</span>`;
+            card.onclick = () => autoAssignTrait(trait);
+            poolElem.appendChild(card);
+          }
+        });
+      }
+
+      function autoAssignTrait(trait) {
+        if (pyramidState.tier1.length < 3) {
+          pyramidState.tier1.push(trait);
+        } else if (pyramidState.tier2.length < 7) {
+          pyramidState.tier2.push(trait);
+        } else if (pyramidState.tier3.length < 15) {
+          pyramidState.tier3.push(trait);
+        } else {
+          alert("Pyramid is full! Tap any trait in the tiers to remove it.");
+          return;
+        }
+        renderPyramid();
+      }
+
+      function removeTrait(tierKey, traitId) {
+        pyramidState[tierKey] = pyramidState[tierKey].filter(
+          (t) => t.id !== traitId,
+        );
+        renderPyramid();
+      }
+
+      function renderPyramid() {
+        // Tier 1
+        const t1Elem = document.getElementById("tier1Container");
+        document.getElementById("countTier1").innerText =
+          `${pyramidState.tier1.length} / 3`;
+        if (pyramidState.tier1.length === 0) {
+          t1Elem.innerHTML =
+            '<span class="text-xs italic text-ivory/40">Tap traits below to add to Tier 1 (Apex Top 3)...</span>';
+        } else {
+          t1Elem.innerHTML = "";
+          pyramidState.tier1.forEach((t) => {
+            const badge = document.createElement("span");
+            badge.className =
+              "px-3 py-1.5 rounded-xl bg-champagne text-espresso-dark text-xs font-bold flex items-center gap-1 shadow cursor-pointer hover:bg-red-400 hover:text-white transition-colors";
+            badge.innerHTML = `<span>${t.icon} ${t.name}</span> <i class="fas fa-times text-[10px] ml-1"></i>`;
+            badge.onclick = () => removeTrait("tier1", t.id);
+            t1Elem.appendChild(badge);
+          });
+        }
+
+        // Tier 2
+        const t2Elem = document.getElementById("tier2Container");
+        document.getElementById("countTier2").innerText =
+          `${pyramidState.tier2.length} / 7`;
+        if (pyramidState.tier2.length === 0) {
+          t2Elem.innerHTML =
+            '<span class="text-xs italic text-ivory/40">Tap traits below to add to Tier 2 (Core Values)...</span>';
+        } else {
+          t2Elem.innerHTML = "";
+          pyramidState.tier2.forEach((t) => {
+            const badge = document.createElement("span");
+            badge.className =
+              "px-3 py-1.5 rounded-xl bg-espresso-dark border border-champagne text-champagne text-xs font-semibold flex items-center gap-1 shadow cursor-pointer hover:bg-red-500 hover:text-white transition-colors";
+            badge.innerHTML = `<span>${t.icon} ${t.name}</span> <i class="fas fa-times text-[10px] ml-1"></i>`;
+            badge.onclick = () => removeTrait("tier2", t.id);
+            t2Elem.appendChild(badge);
+          });
+        }
+
+        // Tier 3
+        const t3Elem = document.getElementById("tier3Container");
+        document.getElementById("countTier3").innerText =
+          `${pyramidState.tier3.length} / 15`;
+        if (pyramidState.tier3.length === 0) {
+          t3Elem.innerHTML =
+            '<span class="text-xs italic text-ivory/40">Tap traits below to add to Tier 3 (Desired Qualities)...</span>';
+        } else {
+          t3Elem.innerHTML = "";
+          pyramidState.tier3.forEach((t) => {
+            const badge = document.createElement("span");
+            badge.className =
+              "px-3 py-1.5 rounded-xl bg-obsidian border border-champagne/40 text-ivory/90 text-xs flex items-center gap-1 shadow cursor-pointer hover:bg-red-500 hover:text-white transition-colors";
+            badge.innerHTML = `<span>${t.icon} ${t.name}</span> <i class="fas fa-times text-[10px] ml-1"></i>`;
+            badge.onclick = () => removeTrait("tier3", t.id);
+            t3Elem.appendChild(badge);
+          });
+        }
+
+        initTraitPool();
+      }
+
+      function resetPyramid() {
+        pyramidState = { tier1: [], tier2: [], tier3: [] };
+        document.getElementById("pyramidSummaryBox").classList.add("hidden");
+        renderPyramid();
+      }
+
+      function summarizePyramid() {
+        const total =
+          pyramidState.tier1.length +
+          pyramidState.tier2.length +
+          pyramidState.tier3.length;
+        const box = document.getElementById("pyramidSummaryBox");
+        box.classList.remove("hidden");
+
+        if (total === 0) {
+          box.innerText =
+            "✨ Your pyramid is empty! Select traits below to customize Mariyam's Preference Pyramid.";
+          return;
+        }
+
+        let t1Names =
+          pyramidState.tier1.map((t) => t.name).join(", ") || "None selected";
+        let t2Names =
+          pyramidState.tier2.map((t) => t.name).join(", ") || "None selected";
+
+        box.innerHTML = `
+          <strong class="text-champagne font-bold text-xs uppercase tracking-widest block not-italic">✨ Preference Pyramid Summary:</strong>
+          <p><strong>👑 Apex Non-Negotiables (Tier 1):</strong> ${t1Names}</p>
+          <p><strong>💎 Core Pillars (Tier 2):</strong> ${t2Names}</p>
+          <p class="text-xs text-ivory/80 pt-1">Total traits prioritized: ${total} of 25. These qualities reflect a truly extraordinary and cherished soul!</p>
+        `;
+      }
+
+      renderPyramid();
+
+      // 5. SECRET SECTION UNLOCK
+      function unlockSecretSection() {
+        document.getElementById("secretSection").classList.remove("hidden");
+      }
+
+      // 6. AUDIO PLAYER LOGIC
+      const audio = document.getElementById("dimensionAudio");
+      const vinyl = document.getElementById("vinylDisc");
+      const status = document.getElementById("playerStatus");
+      const songTitleElem = document.getElementById("currentSongTitle");
+
+      function playSong(index, title, url, btnElem) {
+        audio.src = url;
+        audio.play().catch((e) => console.log("Audio play prevented:", e));
+        songTitleElem.innerText = title;
+        status.innerText = "Now Playing...";
+        vinyl.classList.add("playing");
+
+        const buttons = document.querySelectorAll(".playlist-btn");
+        buttons.forEach((b) => {
+          b.classList.remove(
+            "bg-champagne",
+            "text-espresso-dark",
+            "border-ivory",
+            "shadow-xl",
+          );
+          b.classList.add("bg-espresso-dark/90", "text-ivory");
+        });
+        btnElem.classList.remove("bg-espresso-dark/90", "text-ivory");
+        btnElem.classList.add(
+          "bg-champagne",
+          "text-espresso-dark",
+          "border-ivory",
+          "shadow-xl",
+        );
+      }
+
+      function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0;
+        status.innerText = "Paused / Stopped";
+        vinyl.classList.remove("playing");
+
+        const buttons = document.querySelectorAll(".playlist-btn");
+        buttons.forEach((b) => {
+          b.classList.remove(
+            "bg-champagne",
+            "text-espresso-dark",
+            "border-ivory",
+            "shadow-xl",
+          );
+          b.classList.add("bg-espresso-dark/90", "text-ivory");
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mariyam's Beloved Blooms • A Gift Under the Stars</title>
+    <link rel="icon" type="image/png" href="img/logomariyam.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ivory: {
+                DEFAULT: "#fcfaf7",
+                dark: "#f3ece1",
+                paper: "#fdfbf7",
+                soft: "#faf5ed",
+              },
+              espresso: {
+                light: "#6b4d3e",
+                DEFAULT: "#362319",
+                dark: "#23160e",
+                deeper: "#170e08",
+              },
+              obsidian: {
+                DEFAULT: "#14100c",
+                light: "#1f1a15",
+              },
+              champagne: {
+                DEFAULT: "#d4af37",
+                light: "#f5e8b8",
+                dark: "#b38f24",
+              },
+              pinkheart: "#ff69b4",
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              cursive: ["Sacramento", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #14100c;
+        color: #fcfaf7;
+        overflow-x: hidden;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #170e08;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6b4d3e;
+        border-radius: 4px;
+      }
+
+      /* Perfect Image Fitting & Scaling */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+
+      /* Interactive Background Flower Petals Canvas */
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Glassmorphism Card Hover Effects */
+      .glass-warm {
+        background: rgba(253, 251, 247, 0.96);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        color: #23160e;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-warm:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.95);
+        box-shadow:
+          0 0 35px rgba(212, 175, 55, 0.45),
+          0 15px 30px rgba(0, 0, 0, 0.6);
+      }
+
+      .glass-dark {
+        background: rgba(31, 26, 21, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #fcfaf7;
+      }
+
+      .title-glow {
+        text-shadow:
+          0 0 35px rgba(212, 175, 55, 0.6),
+          0 0 70px rgba(212, 175, 55, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-champagne selection:text-espresso-dark relative"
+  >
+    <!-- Interactive Background Canvas for Floating Flower Petals -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- UNIQUE LUXURY FLOATING NAVBAR -->
+    <header
+      class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50 bg-obsidian/90 backdrop-blur-xl border border-champagne/50 rounded-full px-6 py-3.5 flex justify-between items-center shadow-2xl"
+    >
+      <a
+        href="index.html"
+        class="inline-flex items-center gap-2 text-champagne hover:text-ivory transition-colors text-xs uppercase tracking-widest font-bold group"
+      >
+        <span
+          class="w-7 h-7 rounded-full bg-espresso-dark border border-champagne/40 flex items-center justify-center group-hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-arrow-left text-xs"></i>
+        </span>
+        <span class="hidden sm:inline">Sanctuary Home</span>
+      </a>
+
+      <div
+        class="flex items-center gap-2 px-4 py-1 rounded-full bg-espresso-dark/80 border border-champagne/30 shadow-inner"
+      >
+        <i class="fas fa-seedling text-champagne text-xs animate-pulse"></i>
+        <span
+          class="font-serif italic text-champagne text-xs sm:text-sm font-semibold"
+          >Mariyam's Botanical Sanctuary</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
+        <span
+          class="text-[10px] uppercase tracking-widest text-champagne font-bold hidden md:inline"
+          >Blooms Gallery</span
+        >
+      </div>
+    </header>
+
+    <!-- COMPACT CIRCULAR QUESTION MARK BUTTON FOR PLAYFUL SECRET -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        onclick="openSecretModal()"
+        class="w-12 h-12 rounded-full bg-champagne text-espresso-dark flex items-center justify-center shadow-2xl border-2 border-ivory hover:scale-110 transition-all duration-300 group"
+        title="Secret Hint"
+      >
+        <i
+          class="fas fa-question text-base group-hover:rotate-12 transition-transform font-bold"
+        ></i>
+      </button>
+    </div>
+
+    <!-- HERO HEADER SECTION -->
+    <section
+      class="pt-36 pb-16 px-4 text-center relative z-10 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs tracking-widest uppercase mb-4 border border-champagne/40 shadow-lg"
+        >
+          <i class="fas fa-spa text-xs"></i> Chapter II • Blooms & Botanical
+          Grace
+        </div>
+        <h1
+          class="font-serif text-5xl sm:text-7xl font-bold text-ivory mb-4 title-glow"
+        >
+          Flowers That Mirror Her Grace
+        </h1>
+        <p class="font-serif italic text-xl text-ivory/80 max-w-2xl mx-auto">
+          "Soft petals, delicate fragrance, and striking elegance—botanical
+          wonders that capture the rare beauty you carry within."
+        </p>
+      </div>
+    </section>
+
+    <!-- 6 FLOWERS GRID SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-6xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- FLOWER 1: Lily of the Valley -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-spa mr-1"></i> Pure Serenity
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >01</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/lilyofthewalley.jpg"
+                alt="Lily of the Valley"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Lily of the Valley
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Blooming like delicate white bells in quiet woodlands, carrying a
+              soothing innocence and a gentle grace that instantly brings peace
+              to anyone nearby.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-heart text-champagne-dark mr-1"></i> Pure
+              Affection</span
+            >
+            <span class="text-champagne-dark font-bold">Soft & Timeless</span>
+          </div>
+        </div>
+
+        <!-- FLOWER 2: Spider Lily -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-fire mr-1"></i> Striking Mystery
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >02</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/spiderlily.jpg"
+                alt="Spider Lily"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Spider Lily
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Uniquely captivating with dramatic, sweeping petals. It possesses
+              an unforgettable, magnetic allure that commands silent admiration
+              effortlessly.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-bolt text-champagne-dark mr-1"></i> Rare
+              Elegance</span
+            >
+            <span class="text-champagne-dark font-bold">Exotic & Bold</span>
+          </div>
+        </div>
+
+        <!-- FLOWER 3: Orchid -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-gem mr-1"></i> Royal Grace
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >03</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/orchid.jpg"
+                alt="Orchid"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Orchid
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Representing refined beauty, luxury, and inner strength. An orchid
+              carries a natural royalty—poised, thoughtful, and breathtakingly
+              sophisticated.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-crown text-champagne-dark mr-1"></i>
+              Sophisticated</span
+            >
+            <span class="text-champagne-dark font-bold">Queenly Aura</span>
+          </div>
+        </div>
+
+        <!-- FLOWER 4: Six-Petaled Pink Lily -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-heart mr-1"></i> Radiant Bloom
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >04</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/sixpetaled.jpg"
+                alt="Six-Petaled Pink Lily"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Six-Petaled Pink Lily
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              With six perfectly symmetrical pink petals radiating soft warmth,
+              this flower exudes approachable sweetness, vibrant color, and deep
+              heartfelt joy.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-star text-champagne-dark mr-1"></i> Symmetrical
+              Joy</span
+            >
+            <span class="text-champagne-dark font-bold">Warm & Radiant</span>
+          </div>
+        </div>
+
+        <!-- FLOWER 5: Tulip -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-sun mr-1"></i> Cheerful Elegance
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >05</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/tulip.jpg"
+                alt="Tulip"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Tulip
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Standing tall, neat, and elegant with vibrant optimism. Like a
+              blooming tulip in early spring, its presence instantly brightens
+              up any room.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-smile text-champagne-dark mr-1"></i> Bright
+              Optimism</span
+            >
+            <span class="text-champagne-dark font-bold">Springtime Joy</span>
+          </div>
+        </div>
+
+        <!-- FLOWER 6: Sakura / Cherry Blossom -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-feather mr-1"></i> Ethereal Beauty
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >06</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/sakura.jpg"
+                alt="Cherry Blossom"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Sakura (Cherry Blossom)
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Soft pink, delicate, and breathtakingly poetic. Sakura petals
+              capture a dreamy aesthetic and leave behind a gentle, heartwarming
+              magic in every memory.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-cloud text-champagne-dark mr-1"></i> Poetic
+              Dream</span
+            >
+            <span class="text-champagne-dark font-bold">Ethereal & Sweet</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYFUL SECRET MODAL -->
+    <div
+      id="secretModal"
+      class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="glass-warm max-w-md w-full p-8 rounded-3xl shadow-2xl border border-champagne/50 relative text-center transform scale-95 transition-transform duration-300"
+      >
+        <button
+          onclick="closeSecretModal()"
+          class="absolute top-5 right-5 w-8 h-8 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-times text-xs"></i>
+        </button>
+        <div
+          class="w-16 h-16 rounded-full bg-champagne/25 border border-champagne flex items-center justify-center text-3xl mx-auto mb-4 shadow-md"
+        >
+          🌸
+        </div>
+        <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-2">
+          Do you know one secret?
+        </h3>
+        <p class="text-xs text-espresso/90 leading-relaxed mb-6 font-medium">
+          Someone admires your existence the way you admire the most beautiful
+          flowers !
+        </p>
+        <button
+          onclick="closeSecretModal()"
+          class="w-full py-3 rounded-2xl bg-espresso-dark text-champagne font-bold uppercase tracking-wider text-xs hover:bg-champagne hover:text-espresso-dark transition-colors shadow-lg border border-champagne/40"
+        >
+          Aww, So Sweet! ✨
+        </button>
+      </div>
+    </div>
+
+    <!-- MIND-BLOWING LUXURY FOOTER -->
+    <footer
+      class="relative z-10 bg-gradient-to-t from-espresso-deeper to-obsidian border-t border-champagne/40 pt-16 pb-12 px-6 text-center text-ivory/80"
+    >
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div
+          class="w-12 h-12 rounded-full bg-espresso-dark border border-champagne flex items-center justify-center text-champagne mx-auto shadow-2xl"
+        >
+          <i class="fas fa-spa text-lg animate-pulse"></i>
+        </div>
+        <h3
+          class="font-serif text-3xl sm:text-4xl text-ivory font-semibold tracking-wide"
+        >
+          A Garden That Never Fades
+        </h3>
+        <p
+          class="font-serif italic text-base sm:text-lg text-champagne max-w-lg mx-auto"
+        >
+          "Flowers bloom and wither with the seasons, but your gentle heart and
+          radiant spirit stay beautiful forever."
+        </p>
+        <div
+          class="w-24 h-0.5 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto"
+        ></div>
+        <p class="text-xs tracking-widest uppercase text-ivory/50 pt-4">
+          Crafted with love for Mariyam • Botanical Sanctuary
+        </p>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE BACKGROUND CANVAS SCRIPT (FLOATING FLOWER PETALS) -->
+    <script>
+      function openSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+      }
+      function closeSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // Interactive Canvas Background (Floating Petals Animation)
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+      let petals = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      for (let i = 0; i < 35; i++) {
+        petals.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 8 + 4,
+          speedY: Math.random() * 0.8 + 0.3,
+          speedX: Math.random() * 0.6 - 0.3,
+          rotation: Math.random() * 360,
+          rotSpeed: Math.random() * 2 - 1,
+          opacity: Math.random() * 0.6 + 0.2,
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        petals.forEach((p) => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotSpeed;
+
+          if (p.y > canvas.height + 10) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+          }
+          if (p.x < -10) p.x = canvas.width + 10;
+          if (p.x > canvas.width + 10) p.x = -10;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    </script>
+  </body>
+</html>

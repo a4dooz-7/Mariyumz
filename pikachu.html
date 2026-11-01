@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mariyam's Fictional Wonderland • A Gift Under the Stars</title>
+    <link rel="icon" type="image/png" href="img/logomariyam.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ivory: {
+                DEFAULT: "#fcfaf7",
+                dark: "#f3ece1",
+                paper: "#fdfbf7",
+                soft: "#faf5ed",
+              },
+              espresso: {
+                light: "#6b4d3e",
+                DEFAULT: "#362319",
+                dark: "#23160e",
+                deeper: "#170e08",
+              },
+              obsidian: {
+                DEFAULT: "#14100c",
+                light: "#1f1a15",
+              },
+              champagne: {
+                DEFAULT: "#d4af37",
+                light: "#f5e8b8",
+                dark: "#b38f24",
+              },
+              pinkheart: "#ff69b4",
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              cursive: ["Sacramento", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #14100c;
+        color: #fcfaf7;
+        overflow-x: hidden;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #170e08;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6b4d3e;
+        border-radius: 4px;
+      }
+
+      /* Perfect Image Fitting & Scaling */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+
+      /* Interactive Background Canvas for Glowing Stars */
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* 360 Degree Rotating Animation */
+      @keyframes rotate360 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-rotate-360 {
+        display: inline-block;
+        animation: rotate360 4s linear infinite;
+      }
+
+      /* Glassmorphism Card Hover Effects */
+      .glass-warm {
+        background: rgba(253, 251, 247, 0.96);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        color: #23160e;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-warm:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.95);
+        box-shadow:
+          0 0 35px rgba(212, 175, 55, 0.45),
+          0 15px 30px rgba(0, 0, 0, 0.6);
+      }
+
+      .glass-dark {
+        background: rgba(31, 26, 21, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #fcfaf7;
+      }
+
+      .title-glow {
+        text-shadow:
+          0 0 35px rgba(212, 175, 55, 0.6),
+          0 0 70px rgba(212, 175, 55, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-champagne selection:text-espresso-dark relative"
+  >
+    <!-- Interactive Background Canvas for Glowing & Disappearing Stars -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- UNIQUE LUXURY FLOATING NAVBAR -->
+    <header
+      class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50 bg-obsidian/90 backdrop-blur-xl border border-champagne/50 rounded-full px-6 py-3.5 flex justify-between items-center shadow-2xl"
+    >
+      <a
+        href="index.html"
+        class="inline-flex items-center gap-2 text-champagne hover:text-ivory transition-colors text-xs uppercase tracking-widest font-bold group"
+      >
+        <span
+          class="w-7 h-7 rounded-full bg-espresso-dark border border-champagne/40 flex items-center justify-center group-hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-arrow-left text-xs"></i>
+        </span>
+        <span class="hidden sm:inline">Sanctuary Home</span>
+      </a>
+
+      <div
+        class="flex items-center gap-2 px-4 py-1 rounded-full bg-espresso-dark/80 border border-champagne/30 shadow-inner"
+      >
+        <!-- 360 Rotating Electric Charm Icon -->
+        <i class="fas fa-bolt text-champagne text-xs animate-rotate-360"></i>
+        <span
+          class="font-serif italic text-champagne text-xs sm:text-sm font-semibold"
+          >Mariyam's Fictional Wonderland</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
+        <span
+          class="text-[10px] uppercase tracking-widest text-champagne font-bold hidden md:inline"
+          >Wonderland</span
+        >
+      </div>
+    </header>
+
+    <!-- COMPACT CIRCULAR QUESTION MARK BUTTON FOR PLAYFUL SECRET -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        onclick="openSecretModal()"
+        class="w-12 h-12 rounded-full bg-champagne text-espresso-dark flex items-center justify-center shadow-2xl border-2 border-ivory hover:scale-110 transition-all duration-300 group"
+        title="Secret Hint"
+      >
+        <i
+          class="fas fa-question text-base group-hover:rotate-12 transition-transform font-bold"
+        ></i>
+      </button>
+    </div>
+
+    <!-- HERO HEADER SECTION -->
+    <section
+      class="pt-36 pb-16 px-4 text-center relative z-10 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs tracking-widest uppercase mb-4 border border-champagne/40 shadow-lg"
+        >
+          <i class="fas fa-star text-xs"></i> Chapter V • Fictional Wonders &
+          Characters
+        </div>
+        <h1
+          class="font-serif text-5xl sm:text-7xl font-bold text-ivory mb-4 title-glow"
+        >
+          Magical Companions That Mirror Her Charm
+        </h1>
+        <p class="font-serif italic text-xl text-ivory/80 max-w-2xl mx-auto">
+          "Electric energy, mythical majesty, and iconic cute
+          aesthetics—fictional wonders capturing a delightful and vibrant
+          personality."
+        </p>
+      </div>
+    </section>
+
+    <!-- 6 FICTIONAL CHARACTERS/WONDERS GRID SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-6xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- FICTION 1: Pikachu -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <!-- 360 Rotating Electric Charm Icon -->
+                <i class="fas fa-bolt mr-1 animate-rotate-360"></i> Electric
+                Spark
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >01</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/pikaelec.jpg"
+                alt="Pikachu"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80';
+                "
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Pikachu
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Spirited, adorable, and instantly brightening every room with
+              electric charm. Energetic laughter and warmth that create pure joy
+              everywhere.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i
+                class="fas fa-bolt text-champagne-dark mr-1 animate-rotate-360"
+              ></i>
+              Electric Charm</span
+            >
+            <span class="text-champagne-dark font-bold">Lively & Sweet</span>
+          </div>
+        </div>
+
+        <!-- FICTION 2: Hello Kitty -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-heart mr-1"></i> Classic Sweetness
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >02</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/hellokitty.png"
+                alt="Hello Kitty vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Hello Kitty
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              The universal symbol of gentle kindness, friendship, and timeless
+              cuteness. Carrying that exact wholesome warmth wherever footsteps
+              lead.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-smile text-champagne-dark mr-1"></i> Pure
+              Kindness</span
+            >
+            <span class="text-champagne-dark font-bold">Wholesome & Cute</span>
+          </div>
+        </div>
+
+        <!-- FICTION 3: Kuromi -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-moon mr-1"></i> Edgy-Cute Vibe
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >03</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/kuromi.jpg"
+                alt="Kuromi vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Kuromi
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Mischievous, stylish, and delightfully spunky. Matching a playful
+              side that adores a touch of cheeky, cool attitude with graceful
+              flair.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-star text-champagne-dark mr-1"></i> Cheeky &
+              Cool</span
+            >
+            <span class="text-champagne-dark font-bold">Spunky Style</span>
+          </div>
+        </div>
+
+        <!-- FICTION 4: Majestic Dragon -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-fire mr-1"></i> Mythical Power
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >04</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/dragon.jpg"
+                alt="Dragon"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Majestic Dragon
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Symbolizing immense strength, royal guardianship, and big dreams.
+              Like a dragon soaring over high peaks, ambitions know no bounds.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-crown text-champagne-dark mr-1"></i> Unstoppable
+              Might</span
+            >
+            <span class="text-champagne-dark font-bold">Fierce & Grand</span>
+          </div>
+        </div>
+
+        <!-- FICTION 5: Cinnamoroll -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-cloud mr-1"></i> Fluffy Comfort
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >05</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/cinnamoroll.jpg"
+                alt="Cinnamoroll vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Cinnamoroll
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Soft, sweet, and floating on fluffy clouds of happiness. A
+              comforting presence that makes everything feel warm, safe, and
+              peaceful.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-feather text-champagne-dark mr-1"></i> Pure
+              Comfort</span
+            >
+            <span class="text-champagne-dark font-bold">Cloud-Like Sweet</span>
+          </div>
+        </div>
+
+        <!-- FICTION 6: Stitch -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-heart-circle-alt mr-1"></i> Ohana Loyalty
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >06</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/stritch.jpg"
+                alt="Stitch vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Stitch
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              "Ohana means family, and family means nobody gets left behind."
+              Reflecting a fiercely loyal heart and a lovable, playful nature.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-users text-champagne-dark mr-1"></i> Fiercely
+              Loyal</span
+            >
+            <span class="text-champagne-dark font-bold">Ohana First</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYFUL SECRET MODAL -->
+    <div
+      id="secretModal"
+      class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="glass-warm max-w-md w-full p-8 rounded-3xl shadow-2xl border border-champagne/50 relative text-center transform scale-95 transition-transform duration-300"
+      >
+        <button
+          onclick="closeSecretModal()"
+          class="absolute top-5 right-5 w-8 h-8 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-times text-xs"></i>
+        </button>
+        <div
+          class="w-16 h-16 rounded-full bg-champagne/25 border border-champagne flex items-center justify-center text-3xl mx-auto mb-4 shadow-md"
+        >
+          <i
+            class="fas fa-bolt text-champagne-dark text-xl animate-rotate-360"
+          ></i>
+        </div>
+        <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-2">
+          Do you know one secret?
+        </h3>
+        <p class="text-xs text-espresso/90 leading-relaxed mb-6 font-medium">
+          Someone finds you more wonderful than all the wonders this world has
+          to offer !
+        </p>
+        <button
+          onclick="closeSecretModal()"
+          class="w-full py-3 rounded-2xl bg-espresso-dark text-champagne font-bold uppercase tracking-wider text-xs hover:bg-champagne hover:text-espresso-dark transition-colors shadow-lg border border-champagne/40"
+        >
+          Absolute Magic! ✨
+        </button>
+      </div>
+    </div>
+
+    <!-- MIND-BLOWING LUXURY FOOTER -->
+    <footer
+      class="relative z-10 bg-gradient-to-t from-espresso-deeper to-obsidian border-t border-champagne/40 pt-16 pb-12 px-6 text-center text-ivory/80"
+    >
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div
+          class="w-12 h-12 rounded-full bg-espresso-dark border border-champagne flex items-center justify-center text-champagne mx-auto shadow-2xl"
+        >
+          <!-- 360 Rotating Electric Charm Icon -->
+          <i class="fas fa-bolt text-lg animate-rotate-360"></i>
+        </div>
+        <h3
+          class="font-serif text-3xl sm:text-4xl text-ivory font-semibold tracking-wide"
+        >
+          Where Imagination Comes Alive
+        </h3>
+        <p
+          class="font-serif italic text-base sm:text-lg text-champagne max-w-lg mx-auto"
+        >
+          "Fictional realms and magical sparks fade next to the genuine light
+          and joy brought into the real world."
+        </p>
+        <div
+          class="w-24 h-0.5 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto"
+        ></div>
+        <p class="text-xs tracking-widest uppercase text-ivory/50 pt-4">
+          Crafted with love for Mariyam • Fictional Wonderland
+        </p>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE BACKGROUND CANVAS SCRIPT (GLOWING & DISAPPEARING STARS ONLY) -->
+    <script>
+      function openSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+      }
+      function closeSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // Interactive Canvas Background with Glowing & Fading Stars (No Emojis)
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+      let stars = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      for (let i = 0; i < 50; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.8 + 0.6,
+          alpha: Math.random(),
+          alphaSpeed: Math.random() * 0.015 + 0.005,
+          speedY: Math.random() * 0.2 - 0.1,
+          speedX: Math.random() * 0.2 - 0.1,
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach((star) => {
+          // Update position
+          star.y += star.speedY;
+          star.x += star.speedX;
+
+          if (star.y < 0) star.y = canvas.height;
+          if (star.y > canvas.height) star.y = 0;
+          if (star.x < 0) star.x = canvas.width;
+          if (star.x > canvas.width) star.x = 0;
+
+          // Pulse opacity (glow and disappear effect)
+          star.alpha += star.alphaSpeed;
+          if (star.alpha > 1 || star.alpha < 0.1) {
+            star.alphaSpeed = -star.alphaSpeed;
+          }
+
+          ctx.fillStyle = `rgba(212, 175, 55, ${Math.max(0, Math.min(1, star.alpha))})`;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    </script>
+  </body>
+</html>

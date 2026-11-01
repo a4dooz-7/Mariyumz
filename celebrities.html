@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mariyam's Preferred Celebrities • A Gift Under the Stars</title>
+    <!-- Tailwind CSS -->
+    <link rel="icon" type="image/png" href="img/logomariyam.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ivory: {
+                DEFAULT: "#fcfaf7",
+                dark: "#f3ece1",
+                paper: "#fdfbf7",
+                soft: "#faf5ed",
+              },
+              espresso: {
+                light: "#6b4d3e",
+                DEFAULT: "#362319",
+                dark: "#23160e",
+                deeper: "#170e08",
+              },
+              obsidian: {
+                DEFAULT: "#14100c",
+                light: "#1f1a15",
+              },
+              champagne: {
+                DEFAULT: "#d4af37",
+                light: "#f5e8b8",
+                dark: "#b38f24",
+              },
+              pinkheart: "#ff69b4",
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              cursive: ["Sacramento", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #14100c;
+        color: #fcfaf7;
+        overflow-x: hidden;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #170e08;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6b4d3e;
+        border-radius: 4px;
+      }
+
+      /* Perfect Image Fitting & Scaling */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+
+      /* Interactive Background Canvas */
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Glassmorphism Card Hover Effects */
+      .glass-warm {
+        background: rgba(253, 251, 247, 0.96);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        color: #23160e;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-warm:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.95);
+        box-shadow:
+          0 0 35px rgba(212, 175, 55, 0.45),
+          0 15px 30px rgba(0, 0, 0, 0.6);
+      }
+
+      .glass-dark {
+        background: rgba(31, 26, 21, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #fcfaf7;
+      }
+
+      .title-glow {
+        text-shadow:
+          0 0 35px rgba(212, 175, 55, 0.6),
+          0 0 70px rgba(212, 175, 55, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-champagne selection:text-espresso-dark relative"
+  >
+    <!-- Interactive Background Canvas for Music Notes & Stars -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- UNIQUE LUXURY FLOATING NAVBAR -->
+    <header
+      class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50 bg-obsidian/90 backdrop-blur-xl border border-champagne/50 rounded-full px-6 py-3.5 flex justify-between items-center shadow-2xl"
+    >
+      <a
+        href="index.html"
+        class="inline-flex items-center gap-2 text-champagne hover:text-ivory transition-colors text-xs uppercase tracking-widest font-bold group"
+      >
+        <span
+          class="w-7 h-7 rounded-full bg-espresso-dark border border-champagne/40 flex items-center justify-center group-hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-arrow-left text-xs"></i>
+        </span>
+        <span class="hidden sm:inline">Sanctuary Home</span>
+      </a>
+
+      <div
+        class="flex items-center gap-2 px-4 py-1 rounded-full bg-espresso-dark/80 border border-champagne/30 shadow-inner"
+      >
+        <i
+          class="fas fa-star text-amber-300 text-xs animate-spin"
+          style="animation-duration: 8s"
+        ></i>
+        <span
+          class="font-serif italic text-champagne text-xs sm:text-sm font-semibold"
+          >Mariyam's Star Collection</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
+        <span
+          class="text-[10px] uppercase tracking-widest text-champagne font-bold hidden md:inline"
+          >Live Gallery</span
+        >
+      </div>
+    </header>
+
+    <!-- COMPACT CIRCULAR QUESTION MARK BUTTON FOR PLAYFUL SECRET -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        onclick="openSecretModal()"
+        class="w-12 h-12 rounded-full bg-champagne text-espresso-dark flex items-center justify-center shadow-2xl border-2 border-ivory hover:scale-110 transition-all duration-300 group"
+        title="Secret Hint"
+      >
+        <i
+          class="fas fa-question text-base group-hover:rotate-12 transition-transform font-bold"
+        ></i>
+      </button>
+    </div>
+
+    <!-- HERO HEADER SECTION -->
+    <section
+      class="pt-36 pb-16 px-4 text-center relative z-10 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs tracking-widest uppercase mb-4 border border-champagne/40 shadow-lg"
+        >
+          <i class="fas fa-compact-disc text-xs"></i> Chapter I • Preferred
+          Celebrities
+        </div>
+        <h1
+          class="font-serif text-5xl sm:text-7xl font-bold text-ivory mb-4 title-glow"
+        >
+          Icons Who Mirror Her Spark
+        </h1>
+        <p class="font-serif italic text-xl text-ivory/80 max-w-2xl mx-auto">
+          "From cinematic melancholia to soulful melodies and effortless
+          charm—artists and stars whose artistry echoes your unique aesthetic."
+        </p>
+      </div>
+    </section>
+
+    <!-- 6 CELEBRITIES GRID SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-6xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- CELEBRITY 1: Lana Del Rey -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-music mr-1"></i> Cinematic Muse
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >01</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/lana.jpg"
+                alt="Lana Del Rey vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Lana Del Rey
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              She wants to embody that timeless, vintage glamour and poetic
+              lyricism. Just like Lana's songs under starry nights, your
+              presence has an effortless cinematic poetry.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-heart text-champagne-dark mr-1"></i> Ultimate
+              Aesthetic</span
+            >
+            <span class="text-champagne-dark font-bold">Dreamy & Vintage</span>
+          </div>
+        </div>
+
+        <!-- CELEBRITY 2: Central Cee -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-headphones mr-1"></i> Bold Rhythm
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >02</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/centralcee.jpg"
+                alt="Central Cee vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Central Cee
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              She loves his dynamic energy and chart-topping swagger. It matches
+              that confident, cool, and sharp side of your personality when you
+              take charge of life.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-bolt text-champagne-dark mr-1"></i> High
+              Energy</span
+            >
+            <span class="text-champagne-dark font-bold">Unapologetic Cool</span>
+          </div>
+        </div>
+
+        <!-- CELEBRITY 3: Ruel -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-compact-disc mr-1"></i> Soulful Voice
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >03</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/ruel.jpg"
+                alt="Ruel vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Ruel
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Known for smooth vocals and heartfelt pop anthems. His music
+              captures the youthful sweetness, depth, and romantic daydreams
+              that resonate with your spirit.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-feather text-champagne-dark mr-1"></i> Pure
+              Melody</span
+            >
+            <span class="text-champagne-dark font-bold">Tender & Deep</span>
+          </div>
+        </div>
+
+        <!-- CELEBRITY 4: Cortis (All Members) -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-users mr-1"></i> Ensemble Charm
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >04</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/cortis.jpg"
+                alt="Cortis members vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Cortis (All Members)
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              She loves the collective synergy, talent, and style of every
+              single member. Much like them, you appreciate teamwork,
+              creativity, and bright companionship.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-gem text-champagne-dark mr-1"></i> Total
+              Synergy</span
+            >
+            <span class="text-champagne-dark font-bold">Dynamic Crew</span>
+          </div>
+        </div>
+
+        <!-- CELEBRITY 5: Tom Holland -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-mask mr-1"></i> Playful Hero
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >05</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/tomholland.jpg"
+                alt="Tom Holland vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Tom Holland
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Charming, witty, and endearingly genuine. His energetic
+              personality mirrors the fun, lighthearted banter and adventurous
+              spark you bring into conversations.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-smile text-champagne-dark mr-1"></i> Pure
+              Charm</span
+            >
+            <span class="text-champagne-dark font-bold">Witty & Bright</span>
+          </div>
+        </div>
+
+        <!-- CELEBRITY 6: Billie Eilish -->
+        <div
+          class="glass-warm p-6 rounded-3xl shadow-2xl flex flex-col justify-between group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-espresso-dark text-champagne border border-champagne/30"
+              >
+                <i class="fas fa-moon mr-1"></i> Ethereal Soul
+              </span>
+              <span class="text-champagne-dark font-serif font-bold text-lg"
+                >06</span
+              >
+            </div>
+            <div
+              class="rounded-2xl overflow-hidden mb-4 h-52 bg-ivory-dark border border-espresso/20 shadow-inner flex items-center justify-center"
+            >
+              <img
+                src="img/billie.jpg"
+                alt="Billie Eilish vibe"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-1">
+              Billie Eilish
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Unapologetically authentic with a moody, captivating vocal style.
+              Like Billie, you possess an intriguing depth and creative
+              independence that commands quiet respect.
+            </p>
+          </div>
+          <div
+            class="mt-6 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-fire text-champagne-dark mr-1"></i> Raw
+              Authenticity</span
+            >
+            <span class="text-champagne-dark font-bold">Bold & Mystic</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYFUL SECRET MODAL -->
+    <div
+      id="secretModal"
+      class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="glass-warm max-w-md w-full p-8 rounded-3xl shadow-2xl border border-champagne/50 relative text-center transform scale-95 transition-transform duration-300"
+      >
+        <button
+          onclick="closeSecretModal()"
+          class="absolute top-5 right-5 w-8 h-8 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-times text-xs"></i>
+        </button>
+        <div
+          class="w-16 h-16 rounded-full bg-champagne/25 border border-champagne flex items-center justify-center text-3xl mx-auto mb-4 shadow-md"
+        >
+          ✨
+        </div>
+        <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-2">
+          Do you know one secret?
+        </h3>
+        <p class="text-xs text-espresso/90 leading-relaxed mb-6 font-medium">
+          Someone thinks your star power outshines all those celebrities
+          combined !
+        </p>
+        <button
+          onclick="closeSecretModal()"
+          class="w-full py-3 rounded-2xl bg-espresso-dark text-champagne font-bold uppercase tracking-wider text-xs hover:bg-champagne hover:text-espresso-dark transition-colors shadow-lg border border-champagne/40"
+        >
+          Aww, Best Secret Ever! ✨
+        </button>
+      </div>
+    </div>
+
+    <!-- MIND-BLOWING LUXURY FOOTER -->
+    <footer
+      class="relative z-10 bg-gradient-to-t from-espresso-deeper to-obsidian border-t border-champagne/40 pt-16 pb-12 px-6 text-center text-ivory/80"
+    >
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div
+          class="w-12 h-12 rounded-full bg-espresso-dark border border-champagne flex items-center justify-center text-champagne mx-auto shadow-2xl"
+        >
+          <i class="fas fa-star text-lg animate-pulse"></i>
+        </div>
+        <h3
+          class="font-serif text-3xl sm:text-4xl text-ivory font-semibold tracking-wide"
+        >
+          Shining Brighter Than Any Star
+        </h3>
+        <!-- Decorative Divider Line -->
+        <div
+          class="w-32 h-0.5 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto"
+        ></div>
+        <p
+          class="font-serif italic text-base sm:text-lg text-champagne max-w-lg mx-auto"
+        >
+          "Celebrities come and go, but your graceful soul and radiant smile are
+          truly one in a million under the night sky."
+        </p>
+        <div
+          class="w-24 h-0.5 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto"
+        ></div>
+        <p class="text-xs tracking-widest uppercase text-ivory/50 pt-4">
+          Crafted with love for Mariyam • Preferred Celebrities Gallery
+        </p>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE BACKGROUND SCRIPT WITH MUSIC NOTES & STARS -->
+    <script>
+      function openSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+      }
+      function closeSecretModal() {
+        const modal = document.getElementById("secretModal");
+        modal.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // Interactive Canvas Background (Floating Music Notes & Glowing Stars)
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      const symbols = ["♪", "♫", "✨", "★"];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      for (let i = 0; i < 35; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2 + 1,
+          speedY: Math.random() * 0.6 - 0.3,
+          speedX: Math.random() * 0.4 - 0.2,
+          alpha: Math.random() * 0.7 + 0.3,
+          isSymbol: Math.random() > 0.6,
+          symbol: symbols[Math.floor(Math.random() * symbols.length)],
+          size: Math.random() * 12 + 10,
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+
+          if (p.isSymbol) {
+            ctx.font = `${p.size}px sans-serif`;
+            ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha * 0.8})`;
+            ctx.fillText(p.symbol, p.x, p.y);
+          } else {
+            ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    </script>
+  </body>
+</html>

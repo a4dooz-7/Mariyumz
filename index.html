@@ -1,0 +1,2311 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mariyam — A Gift Under the Stars</title>
+    <link rel="icon" type="image/png" href="img/logomariyam.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ivory: {
+                DEFAULT: "#fcfaf7",
+                dark: "#f3ece1",
+                paper: "#fdfbf7",
+                soft: "#faf5ed",
+              },
+              espresso: {
+                light: "#6b4d3e",
+                DEFAULT: "#362319",
+                dark: "#23160e",
+                deeper: "#170e08",
+              },
+              obsidian: {
+                DEFAULT: "#14100c",
+                light: "#1f1a15",
+              },
+              champagne: {
+                DEFAULT: "#d4af37",
+                light: "#f5e8b8",
+                dark: "#b38f24",
+              },
+              pinkheart: "#ff69b4",
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              cursive: ["Sacramento", "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #14100c;
+        color: #fcfaf7;
+        overflow-x: hidden;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #170e08;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6b4d3e;
+        border-radius: 4px;
+      }
+
+      /* Perfect Image Fitting & Seamless Edges */
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+
+      /* Warm White Glassmorphism Cards */
+      .glass-warm {
+        background: rgba(253, 251, 247, 0.96);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        color: #23160e;
+        transition: all 0.35s ease-in-out;
+      }
+      .glass-warm:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(212, 175, 55, 0.9);
+        box-shadow:
+          0 0 25px rgba(212, 175, 55, 0.4),
+          0 12px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Confession Card Hover Effect (Refined Rich Gold/Champagne Glow) */
+      .confession-card {
+        background: rgba(253, 251, 247, 0.96);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(212, 175, 55, 0.5);
+        color: #23160e;
+        transition: all 0.4s ease-in-out;
+      }
+      .confession-card:hover {
+        background: rgba(35, 22, 14, 0.95);
+        color: #fcfaf7;
+        border-color: #d4af37;
+        box-shadow:
+          0 0 35px rgba(212, 175, 55, 0.4),
+          0 10px 30px rgba(0, 0, 0, 0.6);
+        transform: translateY(-6px);
+      }
+      .confession-card:hover .confession-title {
+        color: #f5e8b8;
+      }
+      .confession-card:hover .confession-sub {
+        color: #d4af37;
+      }
+
+      .glass-dark {
+        background: rgba(31, 26, 21, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #fcfaf7;
+      }
+
+      /* Hero Title Glow Effect */
+      .title-glow {
+        text-shadow:
+          0 0 35px rgba(212, 175, 55, 0.6),
+          0 0 70px rgba(212, 175, 55, 0.3);
+        letter-spacing: 0.05em;
+      }
+
+      /* Moon Glow Animation */
+      @keyframes moonGlow {
+        0%,
+        100% {
+          box-shadow:
+            0 0 45px rgba(255, 250, 235, 0.65),
+            0 0 90px rgba(212, 175, 55, 0.3);
+        }
+        50% {
+          box-shadow:
+            0 0 70px rgba(255, 250, 235, 0.9),
+            0 0 120px rgba(212, 175, 55, 0.5);
+        }
+      }
+      .glowing-moon {
+        animation: moonGlow 6s infinite ease-in-out;
+      }
+
+      /* Corner Peek Cat Popups */
+      @keyframes catPeekLeft {
+        0%,
+        100% {
+          transform: translateY(60%) rotate(-6deg);
+        }
+        50% {
+          transform: translateY(0%) rotate(0deg);
+        }
+      }
+      @keyframes catPeekRight {
+        0%,
+        100% {
+          transform: translateY(60%) rotate(6deg);
+        }
+        50% {
+          transform: translateY(0%) rotate(0deg);
+        }
+      }
+      .animate-cat-left {
+        animation: catPeekLeft 6s ease-in-out infinite;
+      }
+      .animate-cat-right {
+        animation: catPeekRight 6.5s ease-in-out infinite;
+      }
+
+      /* Running Pikachu Track Animation (No Outer Border) */
+      @keyframes pikaRunAcross {
+        0% {
+          left: -60px;
+          transform: scaleX(1);
+        }
+        48% {
+          transform: scaleX(1);
+        }
+        50% {
+          left: calc(100% + 20px);
+          transform: scaleX(-1);
+        }
+        98% {
+          transform: scaleX(-1);
+        }
+        100% {
+          left: -60px;
+          transform: scaleX(1);
+        }
+      }
+      .pika-runner-track {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .pika-sprite {
+        position: absolute;
+        top: 2px;
+        left: -60px;
+        width: 52px;
+        height: 52px;
+        animation: pikaRunAcross 16s linear infinite;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+      }
+
+      @keyframes sparkPulse {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.3);
+          text-shadow: 0 0 8px yellow;
+        }
+      }
+      .spark-elem {
+        animation: sparkPulse 1.2s infinite ease-in-out;
+      }
+
+      /* Candle Flame Flicker */
+      @keyframes flameFlicker {
+        0%,
+        100% {
+          transform: scale(1) rotate(-2deg);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.2) rotate(3deg);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px #ffb703);
+        }
+      }
+      .flame-anim {
+        animation: flameFlicker 0.6s infinite ease-in-out alternate;
+      }
+
+      /* Flag Pulse */
+      @keyframes flagWiggle {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(8deg);
+        }
+      }
+      .animate-flag {
+        transform-origin: bottom left;
+        animation: flagWiggle 3s ease-in-out infinite;
+      }
+
+      /* Heart Pulse */
+      @keyframes heartPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.15);
+        }
+      }
+      .pulse-heart {
+        animation: heartPulse 1.8s infinite ease-in-out;
+      }
+
+      /* MINECRAFT NETHERITE / NETHER PORTAL STYLING */
+      .mc-portal-frame {
+        width: 180px;
+        height: 260px;
+        background: #11091c;
+        border: 14px solid #2b2633;
+        box-shadow:
+          0 0 0 4px #14100c,
+          0 0 35px rgba(168, 85, 247, 0.7),
+          inset 0 0 30px rgba(168, 85, 247, 0.9);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .mc-portal-frame:hover {
+        transform: scale(1.05);
+      }
+
+      @keyframes portalFlow {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100px;
+        }
+      }
+
+      .mc-portal-swirl {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(147, 51, 234, 0.85),
+          rgba(192, 132, 252, 0.9) 15px,
+          rgba(107, 33, 168, 0.85) 30px
+        );
+        background-size: 100% 60px;
+        animation: portalFlow 3s linear infinite;
+        mix-blend-mode: screen;
+        opacity: 0.9;
+      }
+
+      /* Fullscreen Teleporting Effect Overlay */
+      #teleportOverlay {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, #a855f7 0%, #3b0764 60%, #000 100%);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      @keyframes vortexSpin {
+        0% {
+          transform: rotate(0deg) scale(0.8);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.5);
+        }
+        100% {
+          transform: rotate(360deg) scale(2.8);
+        }
+      }
+
+      .teleport-vortex {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        border: 12px dashed #e9d5ff;
+        box-shadow: 0 0 90px #a855f7;
+        animation: vortexSpin 1.4s infinite linear;
+      }
+
+      /* Canvases */
+      #particleCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      #starCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body class="antialiased selection:bg-champagne selection:text-espresso-dark">
+    <!-- FULLSCREEN MINECRAFT TELEPORTING OVERLAY -->
+    <div id="teleportOverlay">
+      <div class="teleport-vortex mb-8"></div>
+      <span
+        class="font-serif italic text-2xl text-purple-200 tracking-widest uppercase font-bold animate-pulse flex items-center gap-2"
+      >
+        <i class="fas fa-cube text-purple-300"></i> Entering Celestial
+        Dimension...
+      </span>
+    </div>
+
+    <!-- Canvas for Floating Petals & Lilies -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- SECRET STAR ON TOP LEFT CORNER FOR TIMELINE VAULT -->
+    <div class="fixed top-4 left-4 z-50">
+      <button
+        onclick="openTimelineModalDirectly()"
+        class="w-10 h-10 rounded-full bg-espresso-dark/90 text-champagne border border-champagne/60 flex items-center justify-center hover:scale-110 transition-all shadow-2xl backdrop-blur-md group"
+        title="Secret Memory Vault"
+      >
+        <i
+          class="fas fa-star animate-pulse text-amber-300 group-hover:rotate-45 transition-transform"
+        ></i>
+      </button>
+    </div>
+
+    <!-- FLOATING AUDIO CONTROL WIDGET FOR SONG "I Wanna Be Yours" -->
+    <div class="fixed bottom-6 right-6 z-40">
+      <button
+        id="musicToggle"
+        onclick="toggleAudio()"
+        class="px-4 py-3 rounded-full bg-espresso-dark/90 text-ivory flex items-center gap-3 shadow-2xl border border-champagne/40 hover:scale-105 transition-all duration-300 group backdrop-blur-md"
+      >
+        <i
+          id="musicIcon"
+          class="fas fa-music text-champagne group-hover:rotate-12 transition-transform"
+        ></i>
+        <div class="text-left hidden sm:block">
+          <span
+            class="block text-[10px] uppercase tracking-widest text-champagne/80 font-bold"
+            >Now Playing</span
+          >
+          <span class="block text-xs font-serif italic text-ivory font-semibold"
+            >I Wanna Be Yours — Arctic Monkeys</span
+          >
+        </div>
+      </button>
+    </div>
+
+    <!-- CORNER PEEKING CAT POPUP: MOCHI (LEFT BOTTOM) -->
+    <div
+      class="fixed bottom-0 left-4 z-30 pointer-events-auto cursor-pointer group animate-cat-left"
+      onclick="catMeow('Mochi')"
+      title="Mochi is peeking!"
+    >
+      <div class="flex flex-col items-center">
+        <div
+          class="bg-espresso-dark text-champagne text-[10px] font-bold px-2 py-0.5 rounded-full border border-champagne/40 mb-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1"
+        >
+          <i class="fas fa-cat"></i> Pure Love - Mochi
+        </div>
+        <div
+          class="w-16 h-16 sm:w-20 sm:h-20 rounded-t-full bg-obsidian-light border-2 border-champagne/40 p-1 flex items-center justify-center shadow-2xl"
+        >
+          <svg class="w-12 h-12" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="22" fill="#14100c" />
+            <polygon points="12,18 18,5 26,16" fill="#14100c" />
+            <polygon points="34,16 42,5 48,18" fill="#14100c" />
+            <polygon points="15,16 18,8 23,15" fill="#ff69b4" />
+            <polygon points="37,15 42,8 45,16" fill="#ff69b4" />
+            <circle cx="22" cy="26" r="3" fill="#D4AF37" />
+            <circle cx="38" cy="26" r="3" fill="#D4AF37" />
+            <circle cx="22" cy="26" r="1.2" fill="#14100c" />
+            <circle cx="38" cy="26" r="1.2" fill="#14100c" />
+            <path
+              d="M27 34 Q30 37 33 34"
+              stroke="#ff69b4"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORNER PEEKING CAT POPUP: NEKO (RIGHT BOTTOM) -->
+    <div
+      class="fixed bottom-0 right-44 z-30 pointer-events-auto cursor-pointer group animate-cat-right hidden sm:block"
+      onclick="catMeow('Neko')"
+      title="Neko is peeking!"
+    >
+      <div class="flex flex-col items-center">
+        <div
+          class="bg-ivory text-espresso-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-espresso/30 mb-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1"
+        >
+          <i class="fas fa-cat"></i> Meow! - Neko
+        </div>
+        <div
+          class="w-16 h-16 sm:w-20 sm:h-20 rounded-t-full bg-ivory-paper border-2 border-champagne/40 p-1 flex items-center justify-center shadow-2xl"
+        >
+          <svg class="w-12 h-12" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="22" fill="#FCFAF7" />
+            <polygon points="12,18 18,5 26,16" fill="#6B4D3E" />
+            <polygon points="34,16 42,5 48,18" fill="#6B4D3E" />
+            <circle cx="22" cy="26" r="3" fill="#362319" />
+            <circle cx="38" cy="26" r="3" fill="#362319" />
+            <circle cx="23" cy="25" r="1" fill="#FFFFFF" />
+            <circle cx="39" cy="25" r="1" fill="#FFFFFF" />
+            <path
+              d="M27 34 Q30 37 33 34"
+              stroke="#6B4D3E"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO SECTION (Starry Sky with Blinking Stars, Falling Shooting Stars & Moon) -->
+    <section
+      class="relative min-h-screen bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian text-ivory flex flex-col justify-between overflow-hidden pt-12 pb-20 px-4 sm:px-8"
+    >
+      <!-- Starfield Canvas -->
+      <canvas id="starCanvas"></canvas>
+
+      <!-- Ambient Glowing Moon -->
+      <div
+        class="absolute top-10 right-10 sm:right-20 w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-ivory/95 glowing-moon pointer-events-none z-0 opacity-90 flex items-center justify-center"
+      >
+        <div
+          class="w-full h-full rounded-full bg-gradient-to-tr from-ivory-dark via-transparent to-transparent opacity-40"
+        ></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-20 max-w-4xl mx-auto text-center mt-12 sm:mt-16">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs sm:text-sm tracking-widest uppercase mb-6 border border-champagne/40"
+        >
+          <i class="fas fa-sparkles text-xs"></i> What a beautiful thing it is
+          that, among all possibilities, this world came to have you
+        </div>
+
+        <h1
+          class="font-serif text-6xl sm:text-8xl md:text-9xl font-semibold text-ivory tracking-wide leading-tight mb-2 title-glow"
+        >
+          Mariyam
+        </h1>
+        <div
+          class="w-28 h-1 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto mb-6"
+        ></div>
+
+        <p
+          class="font-serif italic text-xl sm:text-2xl text-ivory/90 max-w-2xl mx-auto mb-10 font-light"
+        >
+          "The most gorgeous soul under the moon, guided by faith, grace, and
+          dreams."
+        </p>
+
+        <!-- Birthday Countdown Timer -->
+        <div
+          class="glass-dark p-6 sm:p-8 rounded-3xl max-w-xl mx-auto mb-8 border border-champagne/30 shadow-2xl"
+        >
+          <h3
+            class="text-xs uppercase tracking-widest text-champagne mb-4 font-bold"
+          >
+            <i class="far fa-calendar-heart mr-2"></i> Countdown to November 3rd
+          </h3>
+          <div
+            class="grid grid-cols-4 gap-2 sm:gap-4 text-center"
+            id="countdown"
+          >
+            <div
+              class="p-3 bg-espresso-dark/80 rounded-2xl border border-champagne/20"
+            >
+              <span
+                id="days"
+                class="block font-serif text-2xl sm:text-4xl text-champagne font-bold"
+                >00</span
+              >
+              <span
+                class="text-[10px] sm:text-xs text-ivory/70 uppercase tracking-wider font-medium"
+                >Days</span
+              >
+            </div>
+            <div
+              class="p-3 bg-espresso-dark/80 rounded-2xl border border-champagne/20"
+            >
+              <span
+                id="hours"
+                class="block font-serif text-2xl sm:text-4xl text-champagne font-bold"
+                >00</span
+              >
+              <span
+                class="text-[10px] sm:text-xs text-ivory/70 uppercase tracking-wider font-medium"
+                >Hours</span
+              >
+            </div>
+            <div
+              class="p-3 bg-espresso-dark/80 rounded-2xl border border-champagne/20"
+            >
+              <span
+                id="minutes"
+                class="block font-serif text-2xl sm:text-4xl text-champagne font-bold"
+                >00</span
+              >
+              <span
+                class="text-[10px] sm:text-xs text-ivory/70 uppercase tracking-wider font-medium"
+                >Mins</span
+              >
+            </div>
+            <div
+              class="p-3 bg-espresso-dark/80 rounded-2xl border border-champagne/20"
+            >
+              <span
+                id="seconds"
+                class="block font-serif text-2xl sm:text-4xl text-champagne font-bold"
+                >00</span
+              >
+              <span
+                class="text-[10px] sm:text-xs text-ivory/70 uppercase tracking-wider font-medium"
+                >Secs</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Button for Birthday Showcase Page -->
+        <div class="mb-10">
+          <button
+            onclick="launchBirthdayPage()"
+            class="px-8 py-4 rounded-full bg-gradient-to-r from-champagne via-champagne-light to-champagne text-espresso-dark font-bold text-sm sm:text-base uppercase tracking-widest hover:scale-105 transition-transform shadow-2xl border border-ivory/40 flex items-center gap-3 mx-auto"
+          >
+            <i class="fas fa-gift text-lg"></i> Happy Birthday, Mariyam! (Open
+            Special Page)
+          </button>
+        </div>
+
+        <!-- Scroll Down CTA -->
+        <a
+          href="#everest-summit"
+          class="inline-flex flex-col items-center gap-2 text-ivory/70 hover:text-champagne transition-colors duration-300"
+        >
+          <span class="text-xs tracking-widest uppercase font-semibold"
+            >Explore Her Journey</span
+          >
+          <i
+            class="fas fa-chevron-down animate-bounce text-sm text-champagne"
+          ></i>
+        </a>
+      </div>
+
+      <div class="h-10 z-10"></div>
+    </section>
+
+    <!-- DEDICATED SHOWCASE SECTION -->
+    <section
+      id="birthdayPage"
+      class="py-24 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian border-y border-champagne/30 relative"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-8">
+        <div
+          class="glass-dark p-8 sm:p-14 rounded-3xl border border-champagne/50 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+        >
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div
+              class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-champagne/10 text-champagne text-xs font-bold uppercase tracking-widest border border-champagne/30"
+            >
+              <i class="fas fa-crown text-champagne mr-1"></i> The Star of My
+              Universe
+            </div>
+
+            <h2
+              class="font-serif text-5xl sm:text-7xl text-ivory font-bold leading-tight"
+            >
+              Mariyam
+              <span class="italic font-normal text-champagne">Lama</span>
+            </h2>
+
+            <p
+              class="font-serif italic text-xl sm:text-2xl text-champagne-light leading-relaxed"
+            >
+              "An effortlessly breathtaking soul whose soft smile steals my
+              focus, whose grace moves like music, and whose presence turns the
+              ordinary into magic."
+            </p>
+
+            <div
+              class="space-y-4 font-sans text-xs sm:text-sm text-ivory/90 leading-relaxed pt-2"
+            >
+              <div
+                class="p-4 rounded-2xl bg-obsidian/70 border border-champagne/30 flex items-start gap-3.5 text-left hover:border-champagne/60 transition-colors"
+              >
+                <i
+                  class="fas fa-heart-pulse text-champagne text-lg mt-0.5 shrink-0"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-0.5"
+                    >Who She Is:</strong
+                  >
+                  A mesmerizing blend of sweet charm, calm intelligence, and
+                  undeniable beauty. She walks into any room and instantly makes
+                  it brighter just by being herself.
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-2xl bg-obsidian/70 border border-champagne/30 flex items-start gap-3.5 text-left hover:border-champagne/60 transition-colors"
+              >
+                <i
+                  class="fas fa-wand-magic-sparkles text-champagne text-lg mt-0.5 shrink-0"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-0.5"
+                    >Why She's So Irresistibly Special:</strong
+                  >
+                  Beyond her captivating smile, it’s her kind heart, adorable
+                  laughter, and playful energy that make her completely
+                  unforgettable. One look from her, and the whole world fades
+                  away.
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-2xl bg-obsidian/70 border border-champagne/30 flex items-start gap-3.5 text-left hover:border-champagne/60 transition-colors"
+              >
+                <i
+                  class="fas fa-gift text-champagne text-lg mt-0.5 shrink-0"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-0.5"
+                    >A Birthday Wish To The Universe's Finest Creation:</strong
+                  >
+                  May your day be as enchanting, sweet, and unforgettable as you
+                  are to me. May every dream you reach for shine as brightly as
+                  your eyes when you smile!
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="pt-4 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-bold text-champagne"
+            >
+              <span
+                ><i class="fas fa-star text-goldheart mr-1"></i> Truly One in a
+                Million</span
+              >
+              <span>•</span>
+              <span><i class="fas fa-gem mr-1"></i> Flawless Beauty</span>
+              <span>•</span>
+              <span><i class="fas fa-heart mr-1"></i> Captivating Heart</span>
+            </div>
+          </div>
+
+          <!-- PHOTO FRAME -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div
+              class="relative w-72 h-[26rem] sm:w-80 sm:h-[30rem] rounded-3xl p-3 bg-gradient-to-b from-champagne/40 via-espresso-dark to-champagne/30 border-2 border-champagne shadow-2xl flex flex-col items-center justify-center group overflow-hidden"
+            >
+              <div
+                class="w-full h-full rounded-2xl overflow-hidden border border-champagne/40 bg-obsidian flex items-center justify-center"
+              >
+                <img
+                  src="img/Mariyamm.jpg"
+                  alt="Mariyam Lama"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  onerror="
+                    this.onerror = null;
+                    this.src = 'IMG/mariyam.jpg';
+                    this.onerror = function () {
+                      this.src =
+                        'https://placehold.co/400x550/362319/d4af37?text=Mariyam+Lama+Photo';
+                    };
+                  "
+                />
+              </div>
+
+              <div
+                class="absolute bottom-6 bg-espresso-dark/95 text-champagne px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase border border-champagne/60 z-20 shadow-2xl backdrop-blur-md flex items-center gap-2"
+              >
+                <i class="fas fa-sparkles text-champagne"></i> Gorgeous Mariyam
+                <i class="fas fa-sparkles text-champagne"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE BREAK 1 WITH REALISTIC PIKACHU ICON RUNNER (No Outer Border) -->
+    <div class="py-6 px-4">
+      <div
+        class="max-w-6xl mx-auto pika-runner-track border-b-2 border-champagne/40"
+      >
+        <div
+          class="pika-sprite"
+          style="
+            background-image: url(&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;);
+          "
+        ></div>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[20%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[45%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[70%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[90%] top-2"
+        ></i>
+      </div>
+    </div>
+
+    <!-- MOUNT EVEREST SUMMIT SECTION -->
+    <section
+      id="everest-summit"
+      class="relative py-20 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian text-ivory overflow-hidden"
+    >
+      <div class="max-w-5xl mx-auto px-4 text-center relative z-20 mb-12">
+        <span
+          class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+          >Her Ultimate Goal</span
+        >
+        <h2 class="font-serif text-3xl sm:text-5xl font-light text-ivory">
+          The Peak of Mount Everest
+        </h2>
+        <p
+          class="font-serif italic text-base sm:text-xl text-ivory/80 max-w-xl mx-auto mt-3"
+        >
+          "You are destined to reach the top. One day, your flag will stand tall
+          on the highest peak in the world."
+        </p>
+      </div>
+
+      <div
+        class="max-w-4xl mx-4 sm:mx-auto relative h-80 sm:h-96 rounded-3xl overflow-hidden border border-champagne/30 bg-obsidian shadow-2xl"
+      >
+        <svg
+          class="absolute bottom-0 w-full h-full"
+          viewBox="0 0 800 400"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#362319" />
+              <stop offset="100%" stop-color="#14100c" />
+            </linearGradient>
+            <linearGradient id="snowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FCFAF7" />
+              <stop offset="100%" stop-color="#F3ECE1" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0 400 L200 180 L400 320 L600 150 L800 400 Z"
+            fill="#23160e"
+            opacity="0.8"
+          />
+          <path d="M150 400 L400 60 L650 400 Z" fill="url(#mountainGrad)" />
+          <path
+            d="M400 60 L450 130 L420 120 L400 140 L380 120 L350 130 Z"
+            fill="url(#snowGrad)"
+          />
+        </svg>
+
+        <div
+          class="absolute top-[12%] left-[49.5%] sm:left-[49.7%] -translate-x-1/2 flex flex-col items-center z-20"
+        >
+          <div class="animate-flag flex items-center">
+            <div class="w-1.5 h-16 bg-champagne rounded-full shadow-lg"></div>
+            <div
+              class="bg-champagne text-espresso-dark px-3.5 py-1.5 rounded-r-xl text-xs font-bold tracking-wider shadow-md uppercase border-l-2 border-espresso-dark flex items-center gap-1.5"
+            >
+              <i class="fas fa-crown text-espresso-dark text-xs"></i> Mariyam's
+              Peak
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80 pointer-events-none"
+        ></div>
+      </div>
+    </section>
+
+    <!-- PAGE BREAK 2 WITH REALISTIC PIKACHU -->
+    <div class="py-6 px-4">
+      <div
+        class="max-w-6xl mx-auto pika-runner-track border-b-2 border-champagne/40"
+      >
+        <div
+          class="pika-sprite"
+          style="
+            background-image: url(&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;);
+            animation-delay: -4s;
+          "
+        ></div>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[15%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[35%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[60%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[80%] top-2"
+        ></i>
+      </div>
+    </div>
+
+    <!-- CHAPTER 1: THE SMALL DETAILS -->
+    <section id="details" class="py-20 px-4 sm:px-8 max-w-6xl mx-auto relative">
+      <div class="text-center mb-16">
+        <span
+          class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+          >Chapter I</span
+        >
+        <h2 class="font-serif text-3xl sm:text-5xl text-ivory font-normal">
+          The Small Details I Cherish
+        </h2>
+        <div class="w-16 h-0.5 bg-champagne mx-auto mt-4"></div>
+        <p class="text-sm sm:text-base text-ivory/80 mt-3 max-w-xl mx-auto">
+          Every favorite celebrity, preferred superhero, dream destination,
+          beloved flower, and fictional character. Click any card to explore!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- GRID 1: Preferred Celebrities -->
+        <a
+          href="celebrities.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-10 h-10 rounded-2xl bg-espresso-dark text-champagne flex items-center justify-center text-lg border border-champagne/30 group-hover:bg-champagne group-hover:text-espresso-dark transition-colors"
+              >
+                <i class="fas fa-star"></i>
+              </div>
+              <span
+                class="text-xs uppercase tracking-widest font-bold text-espresso-light flex items-center gap-1"
+                >Celebrities
+                <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark flex items-center justify-center"
+            >
+              <img
+                src="img/lana.jpg"
+                alt="Favorite Celebrities"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80';
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-2 font-bold">
+              The Stars She Admires
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed mb-3">
+              A little collection of the faces, talents, and personalities that
+              have earned a place in her world.
+            </p>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-heart text-goldheart"></i> Favorite Icons</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+
+        <!-- GRID 2: Flowers & Plants She Loves -->
+        <a
+          href="flowers.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-10 h-10 rounded-2xl bg-espresso-dark text-champagne flex items-center justify-center text-lg border border-champagne/30 group-hover:bg-champagne group-hover:text-espresso-dark transition-colors"
+              >
+                <i class="fas fa-seedling"></i>
+              </div>
+              <span
+                class="text-xs uppercase tracking-widest font-bold text-espresso-light flex items-center gap-1"
+                >Blooms
+                <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark flex items-center justify-center"
+            >
+              <img
+                src="img/flowers.jpg"
+                alt="Tulips and Lilies"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=500&q=80';
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-2 font-bold">
+              A Little Poetry In Petals
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Flowers that speak without words, plants that bring life to a
+              room, and little pieces of nature worth falling in love with.
+            </p>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-spa text-champagne-dark"></i> Elegant
+              Blooms</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+
+        <!-- GRID 3: Destinations She Wants to Reach -->
+        <a
+          href="destinations.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-10 h-10 rounded-2xl bg-espresso-dark text-champagne flex items-center justify-center text-lg border border-champagne/30 group-hover:bg-champagne group-hover:text-espresso-dark transition-colors"
+              >
+                <i class="fas fa-compass"></i>
+              </div>
+              <span
+                class="text-xs uppercase tracking-widest font-bold text-espresso-light flex items-center gap-1"
+                >Destinations
+                <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark flex items-center justify-center"
+            >
+              <img
+                src="img/pokhara.jpg"
+                alt="destinations"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=80';
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-2 font-bold">
+              Places Her Heart Longs To See
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              From the timeless beauty of China to faraway dreamscapes, a
+              collection of places she hopes to explore someday.
+            </p>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-map-marker-alt text-champagne-dark"></i>
+              Favorite Places</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+
+        <!-- GRID 4: CR7 & Real Madrid Matchday Passion -->
+        <a
+          href="sports.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="flex items-center gap-2 bg-espresso-dark text-champagne px-3 py-1 rounded-full text-xs font-bold border border-champagne/30"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"
+                  alt="Real Madrid Logo"
+                  class="w-5 h-5 object-contain"
+                />
+                <span>Real Madrid</span>
+              </div>
+              <span
+                class="font-serif font-bold text-2xl text-espresso flex items-center gap-1"
+                >#7 <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark flex items-center justify-center"
+            >
+              <img
+                src="img/ronaldo.jpg"
+                alt="Cristiano Ronaldo"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src = 'IMG/ronaldo.jpg';
+                  this.onerror = function () {
+                    this.src =
+                      'https://placehold.co/400x300/362319/d4af37?text=CR7+%2B+Real+Madrid';
+                  };
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-2 font-bold">
+              CR7 & Matchday Passion
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Shared devotion for Cristiano Ronaldo and cheering together for
+              Real Madrid! Hala Madrid!
+            </p>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-trophy text-champagne-dark"></i> Football
+              Joy</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+
+        <!-- GRID 5: Frictional Characters She Prefers (Pikachu) -->
+        <a
+          href="pikachu.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-10 h-10 rounded-2xl bg-espresso-dark text-champagne flex items-center justify-center text-lg border border-champagne/30 group-hover:bg-champagne group-hover:text-espresso-dark transition-colors"
+              >
+                <i class="fas fa-bolt"></i>
+              </div>
+              <span
+                class="text-xs uppercase tracking-widest font-bold text-espresso-light flex items-center gap-1"
+                >Fictional Wonders
+                <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark"
+            >
+              <img
+                src="img/grid5.jpg"
+                alt="Pikachu"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src = 'IMG/pika.jpg';
+                  this.onerror = function () {
+                    this.src =
+                      'https://placehold.co/400x300/362319/d4af37?text=Pikachu';
+                  };
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-2 font-bold">
+              Where Imagination Feels Real
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              From Pikachu's electric charm to Hello Kitty's sweetness and the
+              mystery of dragons, a little universe beyond reality.
+            </p>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-bolt text-champagne-dark"></i> Electric
+              Charm</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+
+        <!-- GRID 6: Superheroes She Likes (Spider-Man) -->
+        <a
+          href="superheroes.html"
+          class="glass-warm p-8 rounded-3xl shadow-2xl flex flex-col justify-between hover:scale-105 transition-all duration-300 block group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div
+                class="w-10 h-10 rounded-2xl bg-espresso-dark text-champagne flex items-center justify-center text-base border border-champagne/30 group-hover:bg-champagne group-hover:text-espresso-dark transition-colors"
+              >
+                <i class="fas fa-mask"></i>
+              </div>
+              <span
+                class="text-[10px] uppercase font-bold text-espresso-light flex items-center gap-1"
+                >Superheroes
+                <i class="fas fa-arrow-up-right-from-square text-[10px]"></i
+              ></span>
+            </div>
+
+            <div
+              class="rounded-2xl overflow-hidden mb-4 border border-espresso/20 shadow-md h-48 bg-ivory-dark"
+            >
+              <img
+                src="img/grid6.jpg"
+                alt="Spider-Man"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://placehold.co/300x300/362319/d4af37?text=SpiderMan';
+                "
+              />
+            </div>
+
+            <h3 class="font-serif text-2xl text-espresso-dark mb-1 font-bold">
+              A Little World Of Extraordinary Powers
+            </h3>
+            <p class="text-xs text-espresso/90 leading-relaxed">
+              Where courage meets imagination, the impossible finds a hero, and
+              where every hero has a story.
+            </p>
+          </div>
+          <div
+            class="pt-3 border-t border-espresso/10 text-[11px] font-semibold text-espresso-light flex items-center justify-between"
+          >
+            <span
+              ><i class="fas fa-shield-cat text-champagne-dark"></i> Superhero
+              Vibes</span
+            >
+            <span class="text-champagne-dark font-bold">Explore Grid →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- PAGE BREAK 3 WITH REALISTIC PIKACHU -->
+    <div class="py-6 px-4">
+      <div
+        class="max-w-6xl mx-auto pika-runner-track border-b-2 border-champagne/40"
+      >
+        <div
+          class="pika-sprite"
+          style="
+            background-image: url(&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;);
+            animation-delay: -8s;
+          "
+        ></div>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[20%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[50%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[80%] top-2"
+        ></i>
+      </div>
+    </div>
+
+    <!-- CHAPTER 2: FAITH & GRACE (Enhanced Box Hover Effects) -->
+    <section
+      class="py-24 bg-espresso-dark text-ivory relative overflow-hidden my-8 border-y border-champagne/30"
+    >
+      <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12">
+          <span
+            class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+            >Chapter II</span
+          >
+          <h2 class="font-serif text-3xl sm:text-5xl font-light">
+            Faith, Grace & Divine Light
+          </h2>
+          <div class="w-16 h-0.5 bg-champagne mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="flex justify-center">
+            <div
+              class="relative w-64 h-80 sm:w-80 sm:h-96 rounded-3xl bg-gradient-to-b from-obsidian via-espresso-deeper to-espresso-dark border-2 border-champagne/80 p-5 flex items-center justify-center shadow-2xl overflow-hidden group"
+            >
+              <div
+                class="absolute w-56 h-56 rounded-full bg-champagne/20 blur-3xl top-8"
+              ></div>
+
+              <img
+                src="img/mariiiiii.jpg"
+                alt="Jesus Christ Illustration"
+                class="max-w-full max-h-full object-contain rounded-2xl relative z-10 drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                onerror="
+                  this.onerror = null;
+                  this.src = 'IMG/Mariiiii.jpg';
+                  this.onerror = function () {
+                    this.src =
+                      'https://placehold.co/400x500/362319/d4af37?text=Jesus+Christ+Art';
+                  };
+                "
+              />
+
+              <div
+                class="absolute bottom-3 right-4 text-champagne text-xs font-semibold bg-obsidian/90 px-3 py-1 rounded-full border border-champagne/40 z-20 shadow-md"
+              >
+                <i class="fas fa-cross text-champagne mr-1"></i> Devoted Heart
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6 text-center md:text-left">
+            <h3
+              class="font-serif text-2xl sm:text-3xl text-champagne font-light"
+            >
+              Faithful Spirit & Inner Beauty
+            </h3>
+            <p
+              class="font-serif italic text-lg text-ivory/90 leading-relaxed font-light"
+            >
+              "Your devotion to God and your love for Jesus Christ guide
+              everything you do. It gives you an inner radiance and serenity
+              that makes you truly gorgeous inside and out."
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div
+                class="p-4 rounded-2xl bg-obsidian/70 border border-champagne/30 flex items-start gap-4 text-left transition-all duration-300 hover:border-champagne hover:-translate-y-1 hover:bg-obsidian/90 hover:shadow-xl cursor-default"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-champagne/10 text-champagne flex items-center justify-center shrink-0 border border-champagne/30"
+                >
+                  <i class="fas fa-heart text-xs"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif text-lg text-ivory font-semibold">
+                    Devoted Heart
+                  </h4>
+                  <p class="text-xs text-ivory/70 mt-1">
+                    Holding God first in every step with quiet strength and
+                    gratitude.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-2xl bg-obsidian/70 border border-champagne/30 flex items-start gap-4 text-left transition-all duration-300 hover:border-champagne hover:-translate-y-1 hover:bg-obsidian/90 hover:shadow-xl cursor-default"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-champagne/10 text-champagne flex items-center justify-center shrink-0 border border-champagne/30"
+                >
+                  <i class="fas fa-hands-praying text-xs text-champagne"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif text-lg text-ivory font-semibold">
+                    Graceful & Gorgeous
+                  </h4>
+                  <p class="text-xs text-ivory/70 mt-1">
+                    Your devotion reflects in your kindness, humility, and warm
+                    smile.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE BREAK 4 WITH REALISTIC PIKACHU -->
+    <div class="py-6 px-4">
+      <div
+        class="max-w-6xl mx-auto pika-runner-track border-b-2 border-champagne/40"
+      >
+        <div
+          class="pika-sprite"
+          style="
+            background-image: url(&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;);
+            animation-delay: -12s;
+          "
+        ></div>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[25%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[55%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[85%] top-2"
+        ></i>
+      </div>
+    </div>
+
+    <!-- CHAPTER 3: SECRET CONFESSION -->
+    <section class="py-20 px-4 sm:px-8 max-w-3xl mx-auto text-center">
+      <span
+        class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+        >Chapter III</span
+      >
+      <h2 class="font-serif text-3xl sm:text-5xl text-ivory font-normal mb-4">
+        A Confession Sealed For You
+      </h2>
+      <p class="text-sm text-ivory/80 max-w-md mx-auto mb-10">
+        Protected by our secret emoji password. Click the seal below to unlock
+        the note.
+      </p>
+
+      <div
+        onclick="openPasswordModal()"
+        class="confession-card p-10 sm:p-14 rounded-3xl shadow-2xl cursor-pointer group max-w-md mx-auto relative overflow-hidden"
+      >
+        <div
+          class="w-24 h-24 rounded-full bg-espresso-dark text-champagne flex items-center justify-center mx-auto mb-6 shadow-2xl border-2 border-champagne group-hover:scale-110 transition-transform relative"
+        >
+          <i class="fas fa-lock text-3xl"></i>
+          <div
+            class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-pinkheart text-ivory text-xs flex items-center justify-center font-bold shadow-md"
+          >
+            <i class="fas fa-heart text-[10px]"></i>
+          </div>
+        </div>
+
+        <h3
+          class="font-serif text-2xl confession-title mb-2 font-bold transition-colors"
+        >
+          To Mariyam
+        </h3>
+        <p
+          class="text-xs confession-sub uppercase tracking-widest font-semibold mb-6 transition-colors"
+        >
+          Emoji Password Required
+        </p>
+
+        <span
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-espresso text-ivory text-xs font-semibold uppercase tracking-widest group-hover:bg-champagne group-hover:text-espresso-dark transition-colors border border-champagne/40"
+        >
+          <i class="fas fa-key text-xs"></i> Unlock Note
+        </span>
+      </div>
+    </section>
+
+    <!-- STRICT EMOJI PASSWORD MODAL -->
+    <div
+      id="passwordModal"
+      class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="glass-warm max-w-md w-full p-8 rounded-3xl shadow-2xl border border-champagne/50 relative text-center transform scale-95 transition-transform duration-300"
+        id="passwordContent"
+      >
+        <button
+          onclick="closePasswordModal()"
+          class="absolute top-5 right-5 w-8 h-8 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-times text-xs"></i>
+        </button>
+
+        <div
+          class="w-16 h-16 rounded-full bg-pinkheart/10 border border-pinkheart/40 flex items-center justify-center text-2xl text-pinkheart mx-auto mb-4 pulse-heart"
+        >
+          <i class="fas fa-heart"></i>
+        </div>
+
+        <h3 class="font-serif text-2xl text-espresso-dark font-bold mb-2">
+          Enter Secret Emoji Password
+        </h3>
+        <p class="text-xs text-espresso/80 leading-relaxed mb-6 font-medium">
+          "Tap the exact sparkling pink heart emoji that you send after reels or
+          messages!"
+        </p>
+
+        <div class="space-y-4">
+          <input
+            type="text"
+            id="emojiInput"
+            placeholder="Tap the correct emoji..."
+            class="w-full text-center text-2xl p-3 rounded-2xl bg-ivory-dark border border-espresso/30 text-espresso-dark font-bold focus:outline-none focus:border-champagne"
+          />
+
+          <div class="flex justify-center gap-3 py-2 text-2xl">
+            <button
+              onclick="selectEmoji('💗')"
+              class="w-12 h-12 rounded-2xl bg-pinkheart/20 border-2 border-pinkheart/60 flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            >
+              💗
+            </button>
+            <button
+              onclick="selectEmoji('💕')"
+              class="w-12 h-12 rounded-2xl bg-ivory-soft hover:bg-pinkheart/20 border border-espresso/20 flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            >
+              💕
+            </button>
+            <button
+              onclick="selectEmoji('💖')"
+              class="w-12 h-12 rounded-2xl bg-ivory-soft hover:bg-pinkheart/20 border border-espresso/20 flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            >
+              💖
+            </button>
+            <button
+              onclick="selectEmoji('💞')"
+              class="w-12 h-12 rounded-2xl bg-ivory-soft hover:bg-pinkheart/20 border border-espresso/20 flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            >
+              💞
+            </button>
+          </div>
+
+          <div
+            id="passwordError"
+            class="text-xs text-red-600 font-semibold hidden"
+          >
+            <i class="fas fa-exclamation-circle mr-1"></i> Incorrect emoji! Only
+            the 💗 emoji unlocks this confession.
+          </div>
+
+          <button
+            onclick="verifyPassword()"
+            class="w-full py-3 rounded-2xl bg-espresso-dark text-champagne font-bold uppercase tracking-wider text-xs hover:bg-champagne hover:text-espresso-dark transition-colors shadow-lg border border-champagne/40"
+          >
+            Unlock Note <i class="fas fa-lock-open ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFESSION LETTER MODAL -->
+    <div
+      id="letterModal"
+      class="fixed inset-0 z-50 bg-obsidian/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500"
+    >
+      <div
+        class="bg-ivory-paper max-w-2xl w-full p-8 sm:p-12 rounded-3xl shadow-2xl border border-champagne/50 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-500 text-espresso-dark"
+        id="letterContent"
+      >
+        <button
+          onclick="closeLetterModal()"
+          class="absolute top-6 right-6 w-10 h-10 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div
+          class="flex justify-between items-center mb-8 border-b border-espresso/10 pb-4"
+        >
+          <span
+            class="font-cursive text-3xl sm:text-4xl text-espresso-dark font-bold"
+            >Dearest Mariyam,</span
+          >
+          <span
+            class="text-xs tracking-widest uppercase text-espresso-light font-bold"
+            >Nov 3, 2026</span
+          >
+        </div>
+
+        <div
+          class="space-y-6 font-serif text-base sm:text-lg text-espresso leading-relaxed"
+        >
+          <p>
+            I created this little space to celebrate everything about you. On
+            your birthday, November 3rd, I wanted to show you how much every
+            small detail matters to me.
+          </p>
+          <p>
+            I see your big dreams when you look toward
+            <span class="font-bold text-espresso-dark">Mount Everest</span>, and
+            I know you will reach that peak. I cherish your sweet love for
+            <span class="font-bold text-espresso-dark">Neko</span> and how you
+            hold <span class="font-bold text-espresso-dark">Mochi</span> close
+            to your heart. I smile every time we share the exact same excitement
+            for
+            <span class="font-bold text-espresso-dark">Cristiano Ronaldo</span>
+            and <span class="font-bold text-espresso-dark">Real Madrid</span>!
+          </p>
+          <p>
+            Most of all, I admire your devotion to God and your love for Jesus
+            Christ. The grace and kindness you carry make you so incredibly
+            gorgeous.
+          </p>
+          <p>
+            Happy Birthday, Mariyam. May God bless every path you walk, grant
+            every wish you hold, and keep you glowing under the stars forever.
+          </p>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-espresso/10 text-right">
+          <span
+            class="block text-xs uppercase tracking-widest text-espresso-light font-semibold"
+            >With all my heart,</span
+          >
+          <span
+            class="font-cursive text-4xl text-espresso-dark block mt-2 font-bold"
+            >The one who cares</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- SECRET TIMELINE FULL MODAL -->
+    <div
+      id="timelineModal"
+      class="fixed inset-0 z-50 bg-obsidian/95 backdrop-blur-lg flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none transition-opacity duration-500 overflow-y-auto"
+    >
+      <div
+        class="glass-dark max-w-3xl w-full p-8 sm:p-12 rounded-3xl border-2 border-champagne/60 relative my-auto max-h-[90vh] overflow-y-auto shadow-2xl"
+      >
+        <button
+          onclick="closeTimelineModal()"
+          class="absolute top-6 right-6 w-10 h-10 rounded-full bg-espresso-dark text-champagne flex items-center justify-center hover:scale-110 transition-transform border border-champagne/40"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="text-center mb-12">
+          <div
+            class="w-14 h-14 rounded-full bg-gradient-to-tr from-champagne/30 via-champagne/10 to-transparent border border-champagne flex items-center justify-center text-champagne text-2xl mx-auto mb-4 shadow-xl"
+          >
+            <i class="fas fa-star text-amber-300"></i>
+          </div>
+          <span
+            class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+            >Secret Confession Vault</span
+          >
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ivory">
+            How It All Unfolded ?
+          </h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto mt-4"
+          ></div>
+        </div>
+
+        <!-- ORGANIZED TIMELINE ITEMS -->
+        <div
+          class="space-y-10 relative before:absolute before:inset-0 before:left-5 sm:before:left-1/2 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-champagne/80 before:via-champagne/40 before:to-champagne/10"
+        >
+          <!-- MILESTONE 1 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-champagne bg-espresso-dark text-champagne shrink-0 z-10 shadow-2xl group-hover:scale-125 transition-transform"
+            >
+              <i class="fas fa-eye text-xs"></i>
+            </div>
+            <div
+              class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl glass-warm text-espresso-dark shadow-2xl border border-champagne/50"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-extrabold text-champagne-dark uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-champagne/10 border border-champagne/30"
+                  >Milestone I</span
+                >
+                <i class="fas fa-sparkles text-champagne-dark text-xs"></i>
+              </div>
+              <h4 class="font-serif text-xl font-bold mb-2 text-espresso-dark">
+                The First Glance
+              </h4>
+              <p class="text-xs text-espresso/90 leading-relaxed font-sans">
+                The very first moment I laid eyes on you—a single second that
+                changed everything forever.
+              </p>
+            </div>
+          </div>
+
+          <!-- MILESTONE 2 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-champagne bg-espresso-dark text-champagne shrink-0 z-10 shadow-2xl group-hover:scale-125 transition-transform"
+            >
+              <i class="fas fa-comments text-xs"></i>
+            </div>
+            <div
+              class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl glass-warm text-espresso-dark shadow-2xl border border-champagne/50"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-extrabold text-champagne-dark uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-champagne/10 border border-champagne/30"
+                  >Milestone II</span
+                >
+                <i class="fas fa-moon text-champagne-dark text-xs"></i>
+              </div>
+              <h4 class="font-serif text-xl font-bold mb-2 text-espresso-dark">
+                Late Night Conversations
+              </h4>
+              <p class="text-xs text-espresso/90 leading-relaxed font-sans">
+                Discovering your love for Japan, C-dramas, Cinnamoroll, CR7, and
+                realizing how sweet and genuine your soul is.
+              </p>
+            </div>
+          </div>
+
+          <!-- MILESTONE 3 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-champagne bg-espresso-dark text-champagne shrink-0 z-10 shadow-2xl group-hover:scale-125 transition-transform"
+            >
+              <i class="fas fa-heart text-xs text-pinkheart"></i>
+            </div>
+            <div
+              class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl glass-warm text-espresso-dark shadow-2xl border border-champagne/50"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span
+                  class="text-[10px] font-extrabold text-champagne-dark uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-champagne/10 border border-champagne/30"
+                  >Milestone III</span
+                >
+                <i class="fas fa-gift text-pinkheart text-xs"></i>
+              </div>
+              <h4 class="font-serif text-xl font-bold mb-2 text-espresso-dark">
+                November 3rd Celebration
+              </h4>
+              <p class="text-xs text-espresso/90 leading-relaxed font-sans">
+                Celebrating the most gorgeous soul under the moon. May this be
+                just the beginning of endless beautiful moments together.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE BREAK 5 WITH REALISTIC PIKACHU -->
+    <div class="py-6 px-4">
+      <div
+        class="max-w-6xl mx-auto pika-runner-track border-b-2 border-champagne/40"
+      >
+        <div
+          class="pika-sprite"
+          style="
+            background-image: url(&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;);
+            animation-delay: -14s;
+          "
+        ></div>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[20%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[50%] top-2"
+        ></i>
+        <i
+          class="fas fa-bolt spark-elem text-champagne text-xs absolute left-[80%] top-2"
+        ></i>
+      </div>
+    </div>
+
+    <!-- CHAPTER 4: ENHANCED BEAUTIFUL BIRTHDAY CAKE & REVEAL -->
+    <section class="py-20 bg-obsidian text-ivory text-center px-4 relative">
+      <div class="max-w-2xl mx-auto">
+        <span
+          class="text-xs uppercase tracking-widest text-champagne font-bold block mb-2"
+          >Iconic Celebration</span
+        >
+        <h2 class="font-serif text-3xl sm:text-4xl text-ivory mb-8">
+          A Special Birthday Wish
+        </h2>
+
+        <div
+          id="giftContainer"
+          class="glass-dark p-8 sm:p-12 rounded-3xl border border-champagne/40 max-w-md mx-auto shadow-2xl relative"
+        >
+          <!-- CAKE GRAPHIC -->
+          <div class="flex flex-col items-center mb-6">
+            <div class="flex justify-center items-end gap-6 mb-1">
+              <div
+                onclick="toggleCandle('f1')"
+                class="cursor-pointer flex flex-col items-center group"
+              >
+                <div
+                  id="f1"
+                  class="w-3.5 h-5 rounded-full bg-amber-400 border border-orange-500 flame-anim"
+                ></div>
+                <div
+                  class="w-2 h-8 bg-pinkheart rounded-t-sm border border-ivory/30 shadow-md"
+                ></div>
+              </div>
+              <div
+                onclick="toggleCandle('f2')"
+                class="cursor-pointer flex flex-col items-center group"
+              >
+                <div
+                  id="f2"
+                  class="w-4 h-6 rounded-full bg-amber-400 border border-orange-500 flame-anim"
+                ></div>
+                <div
+                  class="w-2.5 h-10 bg-champagne rounded-t-sm border border-ivory/30 shadow-md"
+                ></div>
+              </div>
+              <div
+                onclick="toggleCandle('f3')"
+                class="cursor-pointer flex flex-col items-center group"
+              >
+                <div
+                  id="f3"
+                  class="w-3.5 h-5 rounded-full bg-amber-400 border border-orange-500 flame-anim"
+                ></div>
+                <div
+                  class="w-2 h-8 bg-pinkheart rounded-t-sm border border-ivory/30 shadow-md"
+                ></div>
+              </div>
+            </div>
+
+            <div
+              class="w-32 h-10 bg-gradient-to-r from-champagne-light via-ivory-paper to-champagne-light rounded-t-2xl border-x-2 border-t-2 border-champagne flex items-center justify-center relative shadow-lg"
+            >
+              <div
+                class="w-full h-2 bg-pinkheart/70 absolute top-0 rounded-t-xl"
+              ></div>
+              <span
+                class="text-[10px] text-espresso-dark font-extrabold tracking-widest uppercase"
+                >Nov 3</span
+              >
+            </div>
+
+            <div
+              class="w-44 h-12 bg-gradient-to-r from-espresso-light via-espresso-dark to-espresso-light border-x-2 border-t-2 border-champagne flex items-center justify-center relative shadow-lg"
+            >
+              <div class="w-full h-2 bg-champagne/80 absolute top-0"></div>
+              <div class="flex gap-2 text-champagne text-xs">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-crown"></i>
+                <i class="fas fa-heart"></i>
+              </div>
+            </div>
+
+            <div
+              class="w-56 h-14 bg-gradient-to-r from-espresso-dark via-obsidian to-espresso-dark border-2 border-champagne rounded-b-2xl shadow-2xl relative overflow-hidden flex flex-col justify-between p-2"
+            >
+              <div class="w-full h-2 bg-ivory/90 rounded-full"></div>
+              <div class="w-full h-1.5 bg-champagne/60 rounded-full"></div>
+            </div>
+          </div>
+
+          <p
+            class="text-[10px] text-champagne/80 font-semibold mb-6 uppercase tracking-wider flex items-center justify-center gap-1"
+          >
+            (Tap the flames to blow out or light the candles!
+            <i class="fas fa-fire-flame-curved text-amber-400"></i>)
+          </p>
+
+          <div id="giftClosed">
+            <button
+              onclick="openGift()"
+              class="px-8 py-4 rounded-full bg-champagne text-espresso-dark font-bold text-xs uppercase tracking-widest hover:bg-ivory transition-colors shadow-lg border border-champagne/50"
+            >
+              <i class="fas fa-gift mr-2"></i> Reveal Birthday Surprise
+            </button>
+          </div>
+
+          <!-- REVEAL SURPRISE CONTENT -->
+          <div id="giftOpened" class="hidden text-left space-y-4">
+            <div class="text-center mb-6">
+              <i
+                class="fas fa-heart-circle-bolt text-pinkheart text-4xl animate-pulse mb-2"
+              ></i>
+              <h3 class="font-serif text-2xl text-champagne font-bold">
+                Happy Birthday, Beautiful!
+              </h3>
+              <span class="text-xs text-ivory/70 italic block"
+                >November 3rd Dedicated Surprise</span
+              >
+            </div>
+
+            <div class="space-y-3 font-sans text-xs">
+              <div
+                class="p-4 rounded-2xl bg-obsidian/80 border border-champagne/40 shadow-md flex items-start gap-3"
+              >
+                <i
+                  class="fas fa-crown text-champagne text-base shrink-0 mt-0.5"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-1"
+                    >A Queen's Chapter</strong
+                  >
+                  <p class="text-ivory/80 leading-relaxed">
+                    May your year ahead be as tall and majestic as Everest, as
+                    cozy as your drama nights, and filled with deep inner peace.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-2xl bg-obsidian/80 border border-champagne/40 shadow-md flex items-start gap-3"
+              >
+                <i
+                  class="fas fa-wand-magic-sparkles text-champagne text-base shrink-0 mt-0.5"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-1"
+                    >Endless Sunshine & Blessings</strong
+                  >
+                  <p class="text-ivory/80 leading-relaxed">
+                    May God shower your life with unending laughter, warm
+                    health, divine protection, and all the happiness your
+                    gorgeous heart deserves!
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-2xl bg-obsidian/80 border border-champagne/40 shadow-md flex items-start gap-3"
+              >
+                <i
+                  class="fas fa-champagne-glasses text-champagne text-base shrink-0 mt-0.5"
+                ></i>
+                <div>
+                  <strong class="text-champagne font-bold block mb-1"
+                    >Forever Glowing</strong
+                  >
+                  <p class="text-ivory/80 leading-relaxed">
+                    Thank you for being such an extraordinary, radiant soul in
+                    this world. Keep shining brighter than the stars!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center pt-3">
+              <button
+                onclick="triggerConfetti()"
+                class="px-6 py-2.5 rounded-full bg-champagne text-espresso-dark text-xs font-bold uppercase tracking-widest hover:bg-ivory transition-colors shadow-md flex items-center justify-center gap-2 mx-auto"
+              >
+                <i class="fas fa-sparkles text-espresso-dark"></i> Flower
+                Shower!
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION: ENTER A NEW DIMENSION WITH NETHERITE PORTAL & HOVERING DRAGONS -->
+    <section
+      class="py-24 bg-gradient-to-b from-obsidian via-espresso-deeper to-obsidian text-ivory text-center px-4 relative overflow-hidden border-t border-champagne/30"
+    >
+      <!-- Hovering Dragons -->
+      <div
+        class="absolute top-12 left-12 sm:left-24 text-champagne/30 text-3xl sm:text-4xl animate-bounce pointer-events-none z-0"
+      >
+        <i class="fas fa-dragon"></i>
+      </div>
+      <div
+        class="absolute bottom-12 right-12 sm:right-24 text-champagne/30 text-3xl sm:text-4xl animate-pulse pointer-events-none z-0"
+      >
+        <i class="fas fa-dragon"></i>
+      </div>
+
+      <div class="max-w-3xl mx-auto relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-champagne text-xs tracking-widest uppercase mb-6 border border-champagne/40 shadow-lg"
+        >
+          <i class="fas fa-cubes text-xs animate-spin"></i> Beyond the Stars
+        </div>
+        <h2
+          class="font-serif text-4xl sm:text-6xl font-bold text-ivory mb-4 title-glow"
+        >
+          Enter a New Dimension
+        </h2>
+        <p
+          class="font-serif italic text-lg sm:text-xl text-ivory/80 max-w-xl mx-auto mb-10"
+        >
+          "Step through the Netherite portal into an endless celestial sanctuary
+          filled with glowing cosmic wonders, lunar phases, and interactive
+          starlight."
+        </p>
+
+        <!-- INTERACTIVE MINECRAFT PORTAL GRAPHIC -->
+        <div class="flex justify-center mb-8">
+          <div
+            class="mc-portal-frame rounded-lg"
+            onclick="enterDimensionPortal()"
+            title="Click to Enter Portal!"
+          >
+            <div class="mc-portal-swirl"></div>
+          </div>
+        </div>
+
+        <!-- Teleporting Portal Button -->
+        <button
+          onclick="enterDimensionPortal()"
+          class="relative px-10 py-5 rounded-full bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-800 text-ivory font-bold text-sm sm:text-base uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.8)] border-2 border-purple-300 flex items-center gap-3 mx-auto group"
+        >
+          <i
+            class="fas fa-cube text-purple-300 text-lg group-hover:rotate-180 transition-transform duration-500"
+          ></i>
+          <span>Step Into The Dimension ✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="py-8 bg-espresso-deeper text-ivory/50 text-center text-xs tracking-widest uppercase border-t border-espresso/20"
+    >
+      <p>Crafted for Mariyam • November 3rd Birthday Celebration</p>
+    </footer>
+
+    <!-- AUDIO PLAYER WITH SONG "I Wanna Be Yours" (M4A) -->
+    <audio id="bgAudio" loop>
+      <source src="I Wanna Be Yours.m4a" type="audio/mp4" />
+    </audio>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      // Toggle Candles
+      function toggleCandle(id) {
+        const flame = document.getElementById(id);
+        flame.classList.toggle("hidden");
+        triggerConfetti();
+      }
+
+      // Timeline Direct Opener (Top Left Star Button)
+      function openTimelineModalDirectly() {
+        const modal = document.getElementById("timelineModal");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        triggerConfetti();
+      }
+
+      function closeTimelineModal() {
+        const modal = document.getElementById("timelineModal");
+        modal.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // Launch Birthday Page
+      function launchBirthdayPage() {
+        const el = document.getElementById("birthdayPage");
+        el.scrollIntoView({ behavior: "smooth" });
+        triggerConfetti();
+      }
+
+      // Countdown Timer
+      function updateCountdown() {
+        const now = new Date();
+        let currentYear = now.getFullYear();
+        let targetDate = new Date(`November 3, ${currentYear} 00:00:00`);
+
+        if (now > targetDate) {
+          targetDate = new Date(`November 3, ${currentYear + 1} 00:00:00`);
+        }
+
+        const diff = targetDate - now;
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+        document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+        document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+        document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // Audio Toggle for "I Wanna Be Yours"
+      let isPlaying = false;
+      const audio = document.getElementById("bgAudio");
+      const musicIcon = document.getElementById("musicIcon");
+
+      function toggleAudio() {
+        if (isPlaying) {
+          audio.pause();
+          musicIcon.className = "fas fa-music text-champagne";
+        } else {
+          audio.play().catch((e) => console.log("Audio trigger required."));
+          musicIcon.className = "fas fa-pause text-champagne";
+        }
+        isPlaying = !isPlaying;
+      }
+
+      function catMeow(catName) {
+        for (let i = 0; i < 15; i++) {
+          createPetal(true);
+        }
+      }
+
+      // Password Modal Logic
+      function openPasswordModal() {
+        const modal = document.getElementById("passwordModal");
+        const content = document.getElementById("passwordContent");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        content.classList.remove("scale-95");
+        content.classList.add("scale-100");
+        document.getElementById("passwordError").classList.add("hidden");
+      }
+
+      function closePasswordModal() {
+        const modal = document.getElementById("passwordModal");
+        const content = document.getElementById("passwordContent");
+        modal.classList.add("opacity-0", "pointer-events-none");
+        content.classList.remove("scale-100");
+        content.classList.add("scale-95");
+      }
+
+      function selectEmoji(emoji) {
+        document.getElementById("emojiInput").value = emoji;
+        verifyPassword();
+      }
+
+      // STRICT EMOJI VERIFICATION: Only 💗 unlocks
+      function verifyPassword() {
+        const val = document.getElementById("emojiInput").value.trim();
+
+        if (val === "💗") {
+          closePasswordModal();
+          setTimeout(openLetterModal, 350);
+        } else {
+          document.getElementById("passwordError").classList.add("hidden");
+        }
+      }
+
+      function openLetterModal() {
+        const modal = document.getElementById("letterModal");
+        const content = document.getElementById("letterContent");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        content.classList.remove("scale-95");
+        content.classList.add("scale-100");
+        triggerConfetti();
+      }
+
+      function closeLetterModal() {
+        const modal = document.getElementById("letterModal");
+        const content = document.getElementById("letterContent");
+        modal.classList.add("opacity-0", "pointer-events-none");
+        content.classList.remove("scale-100");
+        content.classList.add("scale-95");
+      }
+
+      function openGift() {
+        document.getElementById("giftClosed").classList.add("hidden");
+        document.getElementById("giftOpened").classList.remove("hidden");
+        triggerConfetti();
+      }
+
+      function triggerConfetti() {
+        for (let i = 0; i < 35; i++) {
+          createPetal(true);
+        }
+      }
+
+      // STARFIELD CANVAS
+      const starCanvas = document.getElementById("starCanvas");
+      const starCtx = starCanvas.getContext("2d");
+      let stars = [];
+      let shootingStars = [];
+
+      function resizeStarCanvas() {
+        starCanvas.width = starCanvas.parentElement.clientWidth;
+        starCanvas.height = starCanvas.parentElement.clientHeight;
+        initStars();
+      }
+
+      function initStars() {
+        stars = [];
+        shootingStars = [];
+        const count = Math.floor((starCanvas.width * starCanvas.height) / 2500);
+        for (let i = 0; i < count; i++) {
+          stars.push({
+            x: Math.random() * starCanvas.width,
+            y: Math.random() * starCanvas.height,
+            radius: Math.random() * 1.5,
+            alpha: Math.random(),
+            blinkSpeed: Math.random() * 0.02 + 0.005,
+          });
+        }
+        for (let j = 0; j < 4; j++) {
+          createShootingStar();
+        }
+      }
+
+      function createShootingStar() {
+        shootingStars.push({
+          x: Math.random() * (starCanvas.width * 0.7),
+          y: Math.random() * (starCanvas.height * 0.4),
+          length: Math.random() * 60 + 40,
+          speed: Math.random() * 4 + 3,
+          opacity: Math.random() * 0.8 + 0.2,
+        });
+      }
+
+      function drawStars() {
+        starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+        stars.forEach((star) => {
+          star.alpha += star.blinkSpeed;
+          if (star.alpha > 1 || star.alpha < 0.1) {
+            star.blinkSpeed = -star.blinkSpeed;
+          }
+          starCtx.fillStyle = `rgba(255, 250, 240, ${Math.max(0, star.alpha)})`;
+          starCtx.beginPath();
+          starCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          starCtx.fill();
+        });
+
+        shootingStars.forEach((s, index) => {
+          s.x += s.speed;
+          s.y += s.speed * 0.75;
+          starCtx.save();
+          const gradient = starCtx.createLinearGradient(
+            s.x,
+            s.y,
+            s.x - s.length,
+            s.y - s.length * 0.75,
+          );
+          gradient.addColorStop(0, `rgba(255, 250, 220, ${s.opacity})`);
+          gradient.addColorStop(1, "rgba(255, 250, 220, 0)");
+          starCtx.strokeStyle = gradient;
+          starCtx.lineWidth = 2;
+          starCtx.beginPath();
+          starCtx.moveTo(s.x, s.y);
+          starCtx.lineTo(s.x - s.length, s.y - s.length * 0.75);
+          starCtx.stroke();
+          starCtx.restore();
+
+          if (s.x > starCanvas.width + 100 || s.y > starCanvas.height + 100) {
+            shootingStars.splice(index, 1);
+            createShootingStar();
+          }
+        });
+        requestAnimationFrame(drawStars);
+      }
+
+      // Floating Petals Canvas
+      const petalCanvas = document.getElementById("particleCanvas");
+      const petalCtx = petalCanvas.getContext("2d");
+      let petals = [];
+
+      function resizePetalCanvas() {
+        petalCanvas.width = window.innerWidth;
+        petalCanvas.height = window.innerHeight;
+      }
+
+      function createPetal(burst = false) {
+        petals.push({
+          x: Math.random() * petalCanvas.width,
+          y: burst ? Math.random() * petalCanvas.height : -20,
+          size: Math.random() * 9 + 6,
+          speedY: Math.random() * 1.5 + 0.6,
+          speedX: Math.random() * 1.2 - 0.6,
+          rotation: Math.random() * 360,
+          rotSpeed: Math.random() * 2 - 1,
+          opacity: Math.random() * 0.7 + 0.3,
+        });
+      }
+
+      function drawPetals() {
+        petalCtx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
+        if (petals.length < 25 && Math.random() < 0.05) {
+          createPetal();
+        }
+        petals.push = petals.push || [];
+        petals.forEach((p, index) => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotSpeed;
+          if (p.y > petalCanvas.height + 20) {
+            petals.splice(index, 1);
+          }
+          petalCtx.save();
+          petalCtx.translate(p.x, p.y);
+          petalCtx.rotate((p.rotation * Math.PI) / 180);
+          petalCtx.fillStyle = `rgba(249, 246, 240, ${p.opacity})`;
+          petalCtx.beginPath();
+          petalCtx.ellipse(0, 0, p.size, p.size / 2.2, 0, 0, Math.PI * 2);
+          petalCtx.fill();
+          petalCtx.restore();
+        });
+        requestAnimationFrame(drawPetals);
+      }
+
+      window.addEventListener("resize", () => {
+        resizeStarCanvas();
+        resizePetalCanvas();
+      });
+
+      window.onload = function () {
+        resizeStarCanvas();
+        resizePetalCanvas();
+        drawStars();
+        drawPetals();
+      };
+
+      // MINECRAFT PORTAL TELEPORTATION ANIMATION
+      function enterDimensionPortal() {
+        const overlay = document.getElementById("teleportOverlay");
+        overlay.style.pointerEvents = "auto";
+        overlay.style.opacity = "1";
+
+        setTimeout(() => {
+          window.location.href = "dimension.html";
+        }, 1600);
+      }
+    </script>
+  </body>
+</html>
